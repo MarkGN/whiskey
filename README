@@ -1,0 +1,9 @@
+Files for the Whiskey system, a set of rules designed for tabletop RPGs in the vein of D&D.
+
+Notable differences include:
+* Use of cards rather than dice;
+* Emphasis of checks whose failure results in negative consequences, rather than null consequences, in particular the clashing mechanic, wherein a failed attack means the opponent scores a hit, rather than merely a miss;
+* Batched turns, wherein all players declare their actions before any are resolved;
+* Damage is directly calculated from the to-hit check, rather than requiring a specific roll.
+
+This is as-yet untested in over-the-table play. Feedback is very welcome.
