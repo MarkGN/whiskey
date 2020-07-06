@@ -8,7 +8,7 @@
     }
   },
 
-  "swelling": {
+  "tank minion": {
     "combat": 4,
     "hp": 8,
     "damage": {
@@ -17,7 +17,7 @@
     }
   },
 
-  "endocarditis": {
+  "striker minion": {
     "combat": 7,
     "hp": 4,
     "damage": {
@@ -26,7 +26,7 @@
     }
   },
 
-  "cyanosis": {
+  "caster minion": {
     "combat": 3,
     "hp": 5,
     "damage": {
@@ -36,7 +36,7 @@
     "special": ["magic"]
   },
 
-  "heartbreaker": {
+  "boss": {
     "combat": 8,
     "hp": 40,
     "damage": {

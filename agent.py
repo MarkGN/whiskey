@@ -13,8 +13,10 @@ class Agent:
     def __init__(self,agent_type=None):
 
         # TODO: could we cut half of this and have the entire statblock just be j?
+        #
+
         # j = copy.deepcopy(title)
-        agent_json = agent_types[agent_type]
+        agent_json = copy.deepcopy(agent_types[agent_type])
         self._combat = agent_json["combat"]
         self._dmg = agent_json["damage"]
         self._hp = agent_json["hp"]
