@@ -92,7 +92,8 @@ class Agent:
             true_check_value = check_value if t else 27-check_value+self.get_combat()+enemy.get_combat()
             winner.hit(loser, true_check_value)
 
-# load enemies
+# load agents
+# TODO make it possible to load from multiple different lists, to permit multiple balances
 f = file("./agent.json")
 agents = json.load(f)
 
