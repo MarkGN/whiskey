@@ -21,10 +21,10 @@ class Agent:
             self._special = set(agent_json["special"])
         else:
             self._special={}
-        if "mana" in agent_json.keys():
-            self._mana = agent_json["mana"]
+        if "mp" in agent_json.keys():
+            self._mp = agent_json["mp"]
         else:
-            self._mana=0
+            self._mp=0
 
         traits = ["strong", "nimble", "tough"]
         self._traits = random.sample(traits,1)
@@ -52,11 +52,11 @@ class Agent:
     def set_hp(self, hp):
         self._hp = hp
 
-    def get_mana(self):
-        return self._mana
+    def get_mp(self):
+        return self._mp
 
-    def set_mana(self, mp):
-        self._mana = mp
+    def set_mp(self, mp):
+        self._mp = mp
 
     def has_special(self,special):
         return special in self._special
@@ -95,9 +95,9 @@ class Agent:
         if duel or t or winner.has_special("choreo"):
             winner.hit(loser, check_value)
 
-    # This is a really dumb dummy spell to test functionality
+    # This is dummy spell code to test functionality
+    # Real spells should have MP cost and temporary effects
     def cast_spell(self, army, enemy_army):
-        # print "magic is happening!"
-        self.set_mana(self.get_mana() - 1)
+        self.set_mp(self.get_mp() - 1)
         for agent in army.agents:
-            agent._combat += 1
+            agent._hp += random.randint(0,1)

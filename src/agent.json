@@ -33,7 +33,7 @@
       "fixed": 0,
       "mod": [3]
     },
-    "mana": 3,
+    "mp": 3,
     "special": ["magic"]
   },
 

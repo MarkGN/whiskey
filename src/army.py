@@ -42,13 +42,13 @@ class Army:
 
 	    		# ... whereas unmatched agents can take free potshots at the enemy ...
 	    		elif outnumber:
-	    			if s_agent.has_special("magic") and s_agent.get_mana() > 0:
+	    			if s_agent.has_special("magic") and s_agent.get_mp() > 0:
 	    				s_agent.cast_spell(self, enemy)
 	    			else:
 		    			s_agent.clash(enemy.agents[i-width], self.deck, False)
 	    		# ... or theirs can at ours.
 	    		else:
-	    			if e_agent.has_special("magic") and e_agent.get_mana() > 0:
+	    			if e_agent.has_special("magic") and e_agent.get_mp() > 0:
 	    				e_agent.cast_spell(enemy, self)
 	    			else:
 	    				e_agent.clash(self.agents[i-width], enemy.deck, False)
