@@ -34,7 +34,7 @@
       "mod": [3]
     },
     "mp": 3,
-    "special": ["magic"]
+    "special": {"magic":{}}
   },
 
   "boss": {
@@ -44,6 +44,6 @@
       "fixed": 3,
       "mod": [3,4]
     },
-    "special": ["choreo"]
+    "special": {"choreo":{}}
   }
 }
