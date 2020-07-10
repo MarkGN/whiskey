@@ -17,4 +17,4 @@ agent_specials = {
     "regenerate": (1.0, 1),
 }
 
-agent_specials = {hash(k): agent_specials[k] for k in agent_specials.keys()}
+# agent_specials = {hash(k): agent_specials[k] for k in agent_specials.keys()}

@@ -27,7 +27,8 @@ class Agent:
                     except:
                         raise Exception("Failed to parse special called " + k)
                         # _special.pop(k,None)
-            self._special = {hash(k): _special[k] for k in _special.keys()}
+            # self._special = {hash(k): _special[k] for k in _special.keys()}
+            self._special = _special
         else:
             self._special = {}
         if "mp" in agent_json.keys():
@@ -95,7 +96,7 @@ class Agent:
         return self._hp > 0
 
     def hit(self, enemy, check_value):
-        dmg = self._dmg["fixed"] + sum([check_value % mod for mod in self._dmg["mod"]])
+        dmg = self._dmg["base"] + sum([check_value % mod for mod in self._dmg["mod"]])
         enemy.harm(dmg)
 
     # returns a success/fail and the card value
@@ -128,3 +129,7 @@ class Agent:
     # TODO
     def choose_action(self, army, enemy):
         return "clash"
+
+    # A lazy challenge rating type heuristic. May not work for extreme values; ignores specials
+    def power_level(self):
+        return 1.2**self._combat * self.get_hp() * (2*self._dmg["base"]+sum(m-1 for m in self._dmg["mod"]))
