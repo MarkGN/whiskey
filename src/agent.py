@@ -8,6 +8,8 @@ class Agent:
     # TODO make it possible to load from multiple different lists, to permit multiple balances
     f = open("./agent.json")
     agent_types = json.load(f)
+    # In a complete game, there'd be noncombat traits too
+    generic_traits = ["strong", "nimble", "tough"]
 
     def __init__(self, agent_type=None):
 
@@ -33,9 +35,9 @@ class Agent:
         else:
             self._mp = 0
 
-        traits = ["strong", "nimble", "tough"]
+        traits = Agent.generic_traits
         if self.has_special("magic"):
-            traits += ["fey"]
+            traits = Agent.generic_traits+["fey"]
         self._traits = random.sample(traits, 1)
 
         for trait in self._traits:
