@@ -1,9 +1,8 @@
-import unittest
+import context
+import deck, unittest
 
-import deck
 
 class TestDeck(unittest.TestCase):
-	def test_init(self):
-		super(TestDeck,unittest.TestCase).__init__()
-		d = deck.Deck()
-		self.assertEqual(len(d.deck),26)
+    def test_size(self):
+        d = deck.Deck()
+        assert len(d.deck) == 26, "Deck should have 26 cards"

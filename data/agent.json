@@ -3,7 +3,7 @@
     "combat": 10,
     "hp": 15,
     "damage": {
-      "base": 1,
+      "fixed": 1,
       "mod": [5]
     }
   },
@@ -12,7 +12,7 @@
     "combat": 4,
     "hp": 8,
     "damage": {
-      "base": 1,
+      "fixed": 1,
       "mod": [4]
     }
   },
@@ -21,7 +21,7 @@
     "combat": 7,
     "hp": 4,
     "damage": {
-      "base": 1,
+      "fixed": 1,
       "mod": [3,4]
     }
   },
@@ -30,7 +30,7 @@
     "combat": 3,
     "hp": 5,
     "damage": {
-      "base": 0,
+      "fixed": 0,
       "mod": [3]
     },
     "mp": 3,
@@ -41,7 +41,7 @@
     "combat": 8,
     "hp": 40,
     "damage": {
-      "base": 3,
+      "fixed": 3,
       "mod": [3,4]
     },
     "special": {"choreo":{}}

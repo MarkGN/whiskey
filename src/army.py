@@ -27,7 +27,7 @@ class Army:
             # Perform combat
             for i in range(depth):
                 # Evenly matched agents can hurt each other ...
-                s_agent = self.agents[i % len(self.agents)]    
+                s_agent = self.agents[i % len(self.agents)]
                 e_agent = enemy.agents[i % len(enemy.agents)]
                 if i < width:
                     # There's a mathematically interesting phenomenon,
@@ -68,7 +68,7 @@ class Army:
                 if a.has_special("regenerate"):
                     p, n = a.get_special("regenerate")
                     if random.random() < p:
-                        a.recover_hp(random.randint(1,n))
+                        a.recover_hp(random.randint(1, n))
 
 
 def simulate(army1_func, army2_func, its):

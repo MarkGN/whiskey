@@ -6,7 +6,7 @@ class Agent:
 
     # load agents
     # TODO make it possible to load from multiple different lists, to permit multiple balances
-    f = open("./agent.json")
+    f = open("data/agent.json")
     agent_types = json.load(f)
     # In a complete game, there'd be noncombat traits too
     generic_traits = ["strong", "nimble", "tough"]
@@ -23,7 +23,7 @@ class Agent:
             for k in _special.keys():
                 if _special[k] == {}:
                     try:
-                        _special[k] = special.agent_specials[hash(k)]
+                        _special[k] = special.agent_specials[k]
                     except:
                         raise Exception("Failed to parse special called " + k)
                         # _special.pop(k,None)
@@ -38,7 +38,7 @@ class Agent:
 
         traits = Agent.generic_traits
         if self.has_special("magic"):
-            traits = Agent.generic_traits+["fey"]
+            traits = Agent.generic_traits + ["fey"]
         self._traits = random.sample(traits, 1)
 
         for trait in self._traits:
@@ -96,7 +96,7 @@ class Agent:
         return self._hp > 0
 
     def hit(self, enemy, check_value):
-        dmg = self._dmg["base"] + sum([check_value % mod for mod in self._dmg["mod"]])
+        dmg = self._dmg["fixed"] + sum([check_value % mod for mod in self._dmg["mod"]])
         enemy.harm(dmg)
 
     # returns a success/fail and the card value
@@ -132,4 +132,8 @@ class Agent:
 
     # A lazy challenge rating type heuristic. May not work for extreme values; ignores specials
     def power_level(self):
-        return 1.2**self._combat * self.get_hp() * (2*self._dmg["base"]+sum(m-1 for m in self._dmg["mod"]))
+        return (
+            1.2 ** self._combat
+            * self.get_hp()
+            * (2 * self._dmg["base"] + sum(m - 1 for m in self._dmg["mod"]))
+        )
