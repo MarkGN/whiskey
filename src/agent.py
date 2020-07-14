@@ -76,11 +76,11 @@ class Agent:
         self._mp = mp
 
     def has_special(self, special):
-        return hash(special) in self._special.keys()
+        return special in self._special.keys()
 
     def get_special(self, special):
         if self.has_special(special):
-            return self._special[hash(special)]
+            return self._special[special]
         else:
             return None
 

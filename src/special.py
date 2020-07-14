@@ -6,14 +6,14 @@
 agent_specials = {
     # If an agent is attacked other than during a clash, can it counter,
     # as with a choreographed fight scene
-    # Can counter up to arg1 enemies
+    # Can counter up to $arg1 enemies
     "choreo": 1,
     # Does an agent have magic spells
-    # There's a bonus if the spell is from arg1 discipline.
+    # There's a bonus if the spell is from $arg1 discipline.
     "magic": None,
     # Can an agent regenerate during combat
-    # Each turn, with probability arg1,
-    # recovers randint(1,arg2) hp
+    # Each turn, with probability $arg1,
+    # recovers randint(1,$arg2) hit points
     "regenerate": (1.0, 1),
 }
 
