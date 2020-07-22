@@ -8,10 +8,12 @@ class Agent:
     # load agents
     # TODO make it possible to load from multiple different lists, to permit multiple balances
     # TODO make this work locally, not just from the test suite
+    # import os, sys
+    # sys.path.insert(1, os.path.join(sys.path[0], "../data"))
     f = open("data/agent.json")
     agent_types = json.load(f)
     # In a complete game, there'd be noncombat traits too
-    generic_traits = ["strong", "nimble", "tough", "quick"]
+    generic_traits = ["nimble", "quick", "strong", "tough"]
 
     def __init__(self, agent_type=None):
 
@@ -50,7 +52,7 @@ class Agent:
             elif trait == "nimble":
                 self._combat += 1
             elif trait == "quick":
-                self._special
+                self._special["quick"] = special.agent_specials["quick"]
             elif trait == "strong":
                 expected_dmg = (
                     self._dmg["fixed"] + sum((d - 1 for d in self._dmg["mod"])) // 2
@@ -65,7 +67,7 @@ class Agent:
         return "Agent: " + str((self._traits[0], self._hp))
 
     def get_combat(self, battle_context):
-        speed = battle_context.turn_number == 1 and self.get_special("quick")
+        speed = battle_context.turn_number == 0 and self.get_special("quick")
         speed = speed if speed else 0
         return self._combat
 

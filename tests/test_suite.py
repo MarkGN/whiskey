@@ -6,6 +6,8 @@ from test_army import TestArmy
 
 TESTS = [TestArmy, TestDeck]
 
+import sys
+
 
 def main():
     # """"""
@@ -14,6 +16,7 @@ def main():
     # for test in TESTS:
     #     suite.addTest(unittest.makeSuite(test))
     # runner.run(suite)
+    print("My sys path is:", sys.path)
     unittest.main()
 
 
