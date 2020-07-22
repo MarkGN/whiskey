@@ -1,15 +1,17 @@
 # A module for running simulations of my Whiskey TT RPG system, intended for design and playtesting
-import copy, json, random, special
+import copy, json, random
+import special
 
 
 class Agent:
 
     # load agents
     # TODO make it possible to load from multiple different lists, to permit multiple balances
+    # TODO make this work locally, not just from the test suite
     f = open("data/agent.json")
     agent_types = json.load(f)
     # In a complete game, there'd be noncombat traits too
-    generic_traits = ["strong", "nimble", "tough"]
+    generic_traits = ["strong", "nimble", "tough", "quick"]
 
     def __init__(self, agent_type=None):
 
@@ -47,6 +49,8 @@ class Agent:
                 self._mp += (self._mp + 2) // 5
             elif trait == "nimble":
                 self._combat += 1
+            elif trait == "quick":
+                self._special
             elif trait == "strong":
                 expected_dmg = (
                     self._dmg["fixed"] + sum((d - 1 for d in self._dmg["mod"])) // 2
@@ -60,7 +64,9 @@ class Agent:
     def __str__(self):
         return "Agent: " + str((self._traits[0], self._hp))
 
-    def get_combat(self):
+    def get_combat(self, battle_context):
+        speed = battle_context.turn_number == 1 and self.get_special("quick")
+        speed = speed if speed else 0
         return self._combat
 
     def get_hp(self):
@@ -100,20 +106,22 @@ class Agent:
         enemy.harm(dmg)
 
     # returns a success/fail and the card value
-    def check(self, target, deck):
+    def check(self, target, battle_context, deck):
         v = deck.reveal().value()
-        vs = v + self.get_combat()
+        vs = v + self.get_combat(battle_context)
         if v >= 24:
             hit = True
         elif v <= 3:
             hit = False
         else:
             hit = vs > target + 13
-        return (hit, vs if hit else 27 - v + self.get_combat())
+        return (hit, vs if hit else 27 - v + self.get_combat(battle_context))
 
     # duel :: is it a duel, ie can the enemy fight back enough to land a hit
-    def clash(self, enemy, deck, duel=True):
-        (t, check_value) = self.check(enemy.get_combat(), deck)
+    def clash(self, enemy, deck, duel, battle_context):
+        (t, check_value) = self.check(
+            enemy.get_combat(battle_context), battle_context, deck
+        )
         if t:
             winner, loser = self, enemy
         else:

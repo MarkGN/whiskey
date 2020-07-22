@@ -1,5 +1,5 @@
-import context
-import deck, unittest
+import deck
+import unittest
 
 
 class TestDeck(unittest.TestCase):

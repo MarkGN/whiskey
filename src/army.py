@@ -1,4 +1,5 @@
-import deck, agent, random
+import deck, agent
+import random
 
 
 class Army:
@@ -12,6 +13,7 @@ class Army:
 
     # TODO: this entire method is a DRY violation. Refactor if possible.
     def battle(self, enemy):
+        turn_number = 0
         while self.agents and enemy.agents:
             # Decide who will fight who, currently random
             random.shuffle(self.agents)
@@ -24,6 +26,7 @@ class Army:
             depth = min(2 * width, max(len(self.agents), len(enemy.agents)))
             outnumber = len(self.agents) > len(enemy.agents)
 
+            battle_context = Battle_Context(self, enemy, turn_number)
             # Perform combat
             for i in range(depth):
                 # Evenly matched agents can hurt each other ...
@@ -38,22 +41,26 @@ class Army:
                     # whereas if it loses early, enemy has a fresh deck and its
                     # free attacks can hit just fine.
                     if random.randint(0, 1):
-                        s_agent.clash(e_agent, self.deck, True)
+                        s_agent.clash(e_agent, self.deck, True, battle_context)
                     else:
-                        e_agent.clash(s_agent, self.deck, True)
+                        e_agent.clash(s_agent, self.deck, True, battle_context)
 
                 # ... whereas unmatched agents can take free potshots at the enemy ...
                 elif outnumber:
                     if s_agent.has_special("magic") and s_agent.get_mp() > 0:
                         s_agent.cast_spell(self, enemy)
                     else:
-                        s_agent.clash(enemy.agents[i - width], self.deck, False)
+                        s_agent.clash(
+                            enemy.agents[i - width], self.deck, False, battle_context
+                        )
                 # ... or theirs can at ours.
                 else:
                     if e_agent.has_special("magic") and e_agent.get_mp() > 0:
                         e_agent.cast_spell(enemy, self)
                     else:
-                        e_agent.clash(self.agents[i - width], enemy.deck, False)
+                        e_agent.clash(
+                            self.agents[i - width], enemy.deck, False, battle_context
+                        )
 
             # Remove dead agents from consideration
             self.agents, self.dead = (
@@ -69,6 +76,14 @@ class Army:
                     p, n = a.get_special("regenerate")
                     if random.random() < p:
                         a.recover_hp(random.randint(1, n))
+            turn_number += 1
+
+
+class Battle_Context:
+    def __init__(self, own_army, enemy_army, turn_number):
+        self.own_army = own_army
+        self.enemy_army = enemy_army
+        self.turn_number = turn_number
 
 
 def simulate(army1_func, army2_func, its):
