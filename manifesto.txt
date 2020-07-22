@@ -1,0 +1,63 @@
+This file is intended to explain the design decisions behind Whiskey. It's heavily inspired by the d20 system, raising the question of why not just use d20, especially considering the latter's extensive published materials.
+
+The following is heavily opinionated and unqualified. I understand that game design has no right or wrong answer; these decisions are made against features of d20 that I personally find to detract from the experience.
+
+=======
+CARDS VS DICE
+=======
+
+When checks are mediated by dice, there's a non-negligible chance of a streak of luck, good or bad. Either is undesirable from a design perspective: they make a well-balanced encounter either boringly easy or frustratingly hard. Nobody likes a dice-driven TPK. By using cards, we can sample without replacement, and thereby reduce the variance without making outcomes wholly predictable. This helps the GM control an encounter.
+
+An additional benefit is that, by using a standard playing deck and splitting cards by colour, we have 26 possible values. This reduces the impact of a +1, which means a scenario may be designed to give them out more freely, which is always fun. I'd split the deck by suit so we could go up to 52, but I don't want to rely on everyone being able to mentally calculate +26 or +39 every other turn. We could use custom-printed cards, and it would be nice to be able to just read 22 rather than have to parse 9 of hearts, but it's a big advantage using standardised hardware.
+
+One possible issue is that players could metagame by way of card counting; or possibly even by preceding an encounter with junk checks, hoping to use up the bad cards, and cycling the deck if instead they use the good checks. It remains to be tested whether this is likely in practice, or whether it's a feature or a flaw: it is technically a method by which a skilful player could do better than average. To prevent the junk checking exploit, decks could be shuffled at the start of major engagements, or at GM discretion.
+
+A GM might keep d20 but use this idea by setting aside royal cards and declaring that red suits are worth only +10, not +13.
+
+This idea was inspired by World of Warcraft's progressive percentage mechanic.
+
+=======
+NEGATIVE CONSEQUENCES
+=======
+
+Suppose, under d20, we have two duellists, each with AC 10 and +0 to-hit, who take turns attacking each other. On average, it takes two attack rolls and one damage roll per successful hit. Gameplay blocks on each die roll.
+
+From a gameplay perspective, it's not desirable that the action blocks too often: it slows the game down, prevents a flow state, and gives players more opportunity to become bored. From a story perspective, an epic duel in which characters stand there and take turns hacking at each other isn't particularly realistic or cinematic.
+
+Instead of asking whether a given attack hits, we could ask the question: who will get the next hit? We could declare that a successful check is still a hit, but a failure now means the enemy lands the next hit. This means fewer checks, so the game speeds up. Flavour could be narrated as desired, with characters moving around more freely. Statistically, the battle would have the same distribution over possible outcomes, assuming a mutual miss in d20 has no real consequences.
+
+A mathematician could show that whoever attacks first has 2/3 chances to land the next hit; the defender has 1/3; and after each hit, the one who was hit last has 2/3 chances. We could therefore simply roll 1d6 and declare the attacker hits on 3-6 and the defender on 1-2, reversing the odds each time the attacker lands a hit. This saves one roll per successful attack. In practice, we would use a d20 and say that whoever has initiative has +3, or +4 with the card-drawing method, which give odds of 65% and 65.38% rather than 66.67%.
+
+As a design decision, I don't in fact give an initiative bonus, because it seems like complexity that doesn't add to gameplay or story, and my objective is not to duplicate d20 outcomes, so much as to produce outcomes that look credible enough for a good game. There is a Quick special that grants the bonus in the first round of a fight, denoting winning initiative.
+
+=======
+MODULO ARITHMETIC DAMAGE
+=======
+
+This is similar to the negative consequences argument: by computing damage from the attack directly, rather than require an additional roll, we speed the game up.
+
+Suppose the above duellists inflict 1d10 damage. We could instead take the to-hit check value mod 10 + 1; this saves a roll, and calculating remainders of low modulo values is easy mental arithmetic. If we don't use an initiative bonus, this has the same distribution as 1d10* without requiring an additional roll. With d20 and +3, if the attacker wins, they inflict rand(11,23) mod 10 + 1 damage, with an expected value of 4.92 damage; if the defender, they inflict rand(4,10) mod 10 + 1, expecting 5.28 damage. Using d10, the value for both would be 5.5. In general, this method is not uniformly random. It remains to be playtested whether this is a flaw; if so, we can simply use damage rolls as in d20.
+
+* Of course, the d20 system's damage is not quite 1d10: critical hits score 2d10. If we try rolling 2d10 on a natural 20, or 1d10+(check mod 20), we don't have quite the same distribution. Again, Whiskey is not intended to have the exact same outcome distribution as d20.
+
+It remains to be playtested whether damage randomisation is necessary at all. In Battle for Wesnoth, a hit under given circumstances inflicts fixed damage, and that's a fine game. The only reason I include this at all is to prevent metagaming of the form "This type of monster takes 3 hits to kill, so one more and he's dead", which is fine in a strategy game like BfW but inappropriate in an RPG.
+
+=======
+THE COMBAT STAT
+=======
+
+Separate to-hit and to-not-be-hit modifiers make sense in d20, but not with a negative consequences mechanic: armour and weapon skill both improve the odds of landing the next hit, so there's no qualitative distinction between the two. We can therefore use a single combat mechanic that incorporates both. This simplifies and expedites combat.
+
+An option is to define combat to be the sum of multiple other stats: armour, dodge, and threat. (Threat means a character's ability to make it difficult for an enemy to attack them without being hit first, eg a sword is worth more threat than a dagger because it's longer.) This way, certain attacks could bypass certain stats, eg an armour-piercing weapon might be very effective against an armoured enemy but unremarkable against one that relies on agility or threat. However, this increases complexity without affecting normal play, so extensive testing is needed to justify it.
+
+One possible flaw is that it complicates the design of roles such as striker and tank. In d20, a striker typically has exceptional to-hit but poor armour, compared to a tank; with a single combat stat, this distinction becomes impossible. Roles are still possible with specials or non-clash combat, but these complicate and likely slow down the game.
+
+=======
+BATCHED TURNS
+=======
+
+A common issue with multiplayer games is dead time, in which a player has to sit and wait for a long time without being able to do anything. A game is supposed to be interactive; it's bad design to not let them act. It can be acceptable under some circumstances, such as a short cutscene, or if they can use it to plan for their next move, but it should not be part of the core mechanic.
+
+A turn-based system also breaks the immersion of a large battle, because characters take turns rather than act all at once. That's not how you simulate a large battle; that's how you simulate a game of pool.
+
+Batching prevents players from planning in response to other players' outcomes, which should hopefully reduce dead time. It also means players are moving at the same time in-story, which should improve immersion.
