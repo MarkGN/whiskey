@@ -6,8 +6,12 @@
 agent_specials = {
     # If an agent is attacked other than during a clash, can it counter,
     # as with a choreographed fight scene
+    # NB: this is deprecated with multiclash rules
     # Can counter up to $arg1 enemies
     "choreo": 1,
+    # Can we absorb up to $arg1 damage to allies per round
+    # NB: this is an attempted tank ability, but hmm.
+    # "lifelink": 5,
     # Does an agent have magic spells
     # There's a bonus if the spell is from $arg1 discipline.
     "magic": None,

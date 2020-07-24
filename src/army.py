@@ -12,6 +12,7 @@ class Army:
         return "\n, ".join([str(a) for a in self.agents]) + "\n"
 
     # TODO: this entire method is a DRY violation. Refactor if possible.
+    # Also, it remains to be seen whether we keep the outnumber mechanic.
     def battle(self, enemy):
         turn_number = 0
         while self.agents and enemy.agents:

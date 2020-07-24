@@ -10,13 +10,7 @@ import sys
 
 
 def main():
-    # """"""
-    # suite = unittest.TestSuite()
-    # runner = unittest.TextTestRunner()
-    # for test in TESTS:
-    #     suite.addTest(unittest.makeSuite(test))
-    # runner.run(suite)
-    print("My sys path is:", sys.path)
+    """"""
     unittest.main()
 
 

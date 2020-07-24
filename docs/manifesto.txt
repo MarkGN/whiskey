@@ -8,11 +8,11 @@ CARDS VS DICE
 
 When checks are mediated by dice, there's a non-negligible chance of a streak of luck, good or bad. Either is undesirable from a design perspective: they make a well-balanced encounter either boringly easy or frustratingly hard. Nobody likes a dice-driven TPK. By using cards, we can sample without replacement, and thereby reduce the variance without making outcomes wholly predictable. This helps the GM control an encounter.
 
-An additional benefit is that, by using a standard playing deck and splitting cards by colour, we have 26 possible values. This reduces the impact of a +1, which means a scenario may be designed to give them out more freely, which is always fun. I'd split the deck by suit so we could go up to 52, but I don't want to rely on everyone being able to mentally calculate +26 or +39 every other turn. We could use custom-printed cards, and it would be nice to be able to just read 22 rather than have to parse 9 of hearts, but it's a big advantage using standardised hardware.
+An additional benefit is that, by using a standard playing deck and splitting cards by colour, we have 26 possible values. This reduces the impact of a +1, which means a scenario may be designed to give them out more freely, which is always fun. I'd split the deck by suit so we could go up to 52, but I don't want to rely on everyone being able to mentally calculate +26 or +39 every other turn. We could use custom-printed cards, and it would be nice to be able to just read 22 rather than have to parse 9 of hearts, but it's a big advantage using standardised hardware. Players can always just draw on a spare deck with a marker pen.
 
 One possible issue is that players could metagame by way of card counting; or possibly even by preceding an encounter with junk checks, hoping to use up the bad cards, and cycling the deck if instead they use the good checks. It remains to be tested whether this is likely in practice, or whether it's a feature or a flaw: it is technically a method by which a skilful player could do better than average. To prevent the junk checking exploit, decks could be shuffled at the start of major engagements, or at GM discretion.
 
-A GM might keep d20 but use this idea by setting aside royal cards and declaring that red suits are worth only +10, not +13.
+A GM might incorporate this idea into d20 by setting aside royal cards and declaring that red suits are worth only +10, not +13.
 
 This idea was inspired by World of Warcraft's progressive percentage mechanic.
 
@@ -26,7 +26,7 @@ From a gameplay perspective, it's not desirable that the action blocks too often
 
 Instead of asking whether a given attack hits, we could ask the question: who will get the next hit? We could declare that a successful check is still a hit, but a failure now means the enemy lands the next hit. This means fewer checks, so the game speeds up. Flavour could be narrated as desired, with characters moving around more freely. Statistically, the battle would have the same distribution over possible outcomes, assuming a mutual miss in d20 has no real consequences.
 
-A mathematician could show that whoever attacks first has 2/3 chances to land the next hit; the defender has 1/3; and after each hit, the one who was hit last has 2/3 chances. We could therefore simply roll 1d6 and declare the attacker hits on 3-6 and the defender on 1-2, reversing the odds each time the attacker lands a hit. This saves one roll per successful attack. In practice, we would use a d20 and say that whoever has initiative has +3, or +4 with the card-drawing method, which give odds of 65% and 65.38% rather than 66.67%.
+A mathematician could show that whoever attacks first has 2/3 chances to land the next hit; the defender has 1/3; and after each hit, the one who was hit last has 2/3 chances. We could therefore simply roll 1d6 and declare the attacker hits on 3-6 and the defender on 1-2, reversing the odds each time the attacker lands a hit. This saves one roll per successful hit. In practice, we would use a d20 and say that whoever has initiative has +3, or +4 with the card-drawing method, which give odds of 65% and 65.38% rather than 66.67%.
 
 As a design decision, I don't in fact give an initiative bonus, because it seems like complexity that doesn't add to gameplay or story, and my objective is not to duplicate d20 outcomes, so much as to produce outcomes that look credible enough for a good game. There is a Quick special that grants the bonus in the first round of a fight, denoting winning initiative.
 
@@ -56,8 +56,10 @@ One possible flaw is that it complicates the design of roles such as striker and
 BATCHED TURNS
 =======
 
-A common issue with multiplayer games is dead time, in which a player has to sit and wait for a long time without being able to do anything. A game is supposed to be interactive; it's bad design to not let them act. It can be acceptable under some circumstances, such as a short cutscene, or if they can use it to plan for their next move, but it should not be part of the core mechanic.
+A common issue with multiplayer games is dead time, in which a player has to sit and wait for a long time without being able to do anything. A game is supposed to be interactive; it's bad design to not let them act. It can be acceptable under some circumstances, such as a short cutscene, or if they can use it to plan for their next move, but it should not be part of the core mechanic. Longer turns and more other players make this worse; being able to do something off-turn ameliorates this, even if it's just planning your next move, as in chess.
 
 A turn-based system also breaks the immersion of a large battle, because characters take turns rather than act all at once. That's not how you simulate a large battle; that's how you simulate a game of pool.
 
 Batching prevents players from planning in response to other players' outcomes, which should hopefully reduce dead time. It also means players are moving at the same time in-story, which should improve immersion.
+
+Finally, by having all characters make checks at the same time, we cut the time spent blocked even further. An encounter with 5 players fighting 5 NPCs might block 10-20 times per round under d20; but between batching, negative consequences, and modulo damage, Whiskey only needs 1 block per round.

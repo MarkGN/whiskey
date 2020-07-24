@@ -13,6 +13,7 @@ class Agent:
     f = open("data/agent.json")
     agent_types = json.load(f)
     # In a complete game, there'd be noncombat traits too
+    # I have about enough to give characters 2, and add Obsessive
     generic_traits = ["nimble", "quick", "strong", "tough"]
 
     def __init__(self, agent_type=None):
@@ -67,9 +68,8 @@ class Agent:
         return "Agent: " + str((self._traits[0], self._hp))
 
     def get_combat(self, battle_context):
-        speed = battle_context.turn_number == 0 and self.get_special("quick")
-        speed = speed if speed else 0
-        return self._combat
+        speed = (battle_context.turn_number == 0) and self.get_special("quick", 0)
+        return self._combat+speed
 
     def get_hp(self):
         return self._hp
@@ -86,11 +86,11 @@ class Agent:
     def has_special(self, special):
         return special in self._special.keys()
 
-    def get_special(self, special):
+    def get_special(self, special, null=None):
         if self.has_special(special):
             return self._special[special]
         else:
-            return None
+            return null
 
     def harm(self, damage):
         if damage > 0:
@@ -111,15 +111,20 @@ class Agent:
     def check(self, target, battle_context, deck):
         v = deck.reveal().value()
         vs = v + self.get_combat(battle_context)
-        if v >= 24:
+        if v >= 26:
             hit = True
-        elif v <= 3:
+        elif v <= 1:
             hit = False
         else:
             hit = vs > target + 13
-        return (hit, vs if hit else 27 - v + self.get_combat(battle_context))
+        # This method is slightly fairer
+        # return (hit, vs if hit else 27 - v + self.get_combat(battle_context))
+        # This method is much easier mental arithmetic
+        return (hit, vs)
 
     # duel :: is it a duel, ie can the enemy fight back enough to land a hit
+    # Note that I'm considering cutting/amending the duel mechanic, as the current form is
+    # arguably un-fun.
     def clash(self, enemy, deck, duel, battle_context):
         (t, check_value) = self.check(
             enemy.get_combat(battle_context), battle_context, deck
@@ -135,10 +140,10 @@ class Agent:
     def cast_spell(self, army, enemy_army):
         self.set_mp(self.get_mp() - 1)
 
-    # Available actions are clash; snipe; and cast.
+    # Actions include charge, defend, and cast
     # TODO
     def choose_action(self, army, enemy):
-        return "clash"
+        return "none"
 
     # A lazy challenge rating type heuristic. May not work for extreme values; ignores specials
     def power_level(self):
