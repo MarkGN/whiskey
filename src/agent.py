@@ -69,7 +69,7 @@ class Agent:
 
     def get_combat(self, battle_context):
         speed = (battle_context.turn_number == 0) and self.get_special("quick", 0)
-        return self._combat+speed
+        return self._combat + speed
 
     def get_hp(self):
         return self._hp
