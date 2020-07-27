@@ -24,6 +24,9 @@ agent_specials = {
     # Does an agent have magic spells
     # There's a bonus if the spell is from $arg1 discipline.
     "magic": None,
+    # Do we get +arg1 combat vs every opponent after the first:
+    # Conservation of Ninjutsu
+    # "ninjutsu": 1,
     # Do we get +$arg1 in the first round of battle
     "quick": 4,
     # Can an agent regenerate during combat

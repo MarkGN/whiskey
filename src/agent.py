@@ -1,4 +1,4 @@
-# A module for running simulations of my Whiskey TT RPG system, intended for design and playtesting
+# Methods and data pertaining to individual agents == characters
 import copy, json, random
 import special
 
@@ -14,7 +14,7 @@ class Agent:
     agent_types = json.load(f)
     # In a complete game, there'd be noncombat traits too
     # I have about enough to give characters 2, and add Obsessive
-    generic_traits = ["nimble", "quick", "strong", "tough"]
+    generic_traits = ["nimble", "obsessive", "quick", "strong", "tough"]
 
     def __init__(self, agent_type=None):
 
@@ -41,28 +41,38 @@ class Agent:
         else:
             self._mp = 0
 
+        # Traits typically improve some major trait by 20% or equivalent
         traits = Agent.generic_traits
         if self.has_special("magic"):
             traits = Agent.generic_traits + ["fey"]
-        self._traits = random.sample(traits, 1)
-
+        self._traits = random.sample(traits, 2)
+        if "obsessive" in self._traits:
+            # Obsessive doubles the effect of one other trait
+            obsess = 2
+        else:
+            obsess = 1
         for trait in self._traits:
             if trait == "fey":
                 # possibly also empower spells somehow?
-                self._mp += (self._mp + 2) // 5
+                self._mp += obsess * (self._mp + 2) // 5
             elif trait == "nimble":
-                self._combat += 1
+                self._combat += obsess
             elif trait == "quick":
-                self._special["quick"] = special.agent_specials["quick"]
+                self._special["quick"] = obsess * special.agent_specials["quick"]
             elif trait == "strong":
-                expected_dmg = (
-                    self._dmg["fixed"] + sum((d - 1 for d in self._dmg["mod"])) // 2
-                )
-                self._dmg["fixed"] += expected_dmg // 5
-                if expected_dmg % 5 >= 2 and self._dmg["mod"]:
-                    self._dmg["mod"][-1] += 1
+                e = self.expected_dmg()
+                self._dmg["fixed"] += obsess * e // 5
+                if (obsess * e) % 5 >= 2:
+                    if self._dmg["mod"]:
+                        self._dmg["mod"][-1] += obsess
+                    else:
+                        self._dmg["mod"] = [1 + obsess]
             elif trait == "tough":
-                self._hp += (self._hp + 2) // 5
+                self._hp += obsess * (self._hp + 2) // 5
+            if trait != "obsess":
+                # If we have >= 3 traits and one is obsessive, only the first is doubled
+                obsess = 1
+
 
     def __str__(self):
         return "Agent: " + str((self._traits[0], self._hp))
@@ -99,6 +109,9 @@ class Agent:
     def recover_hp(self, hp):
         if hp > 0:
             self.set_hp(min(self._max_hp, self.get_hp() + hp))
+
+    def expected_dmg(self):
+        return self._dmg["fixed"] + sum((d - 1 for d in self._dmg["mod"])) // 2
 
     def is_alive(self):
         return self._hp > 0

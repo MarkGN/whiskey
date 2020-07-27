@@ -106,8 +106,8 @@ if __name__ == "__main__":
     simulate(
         lambda: Army([agent.Agent("PC") for i in range(4)]),
         lambda: Army(
-            [agent.Agent("tank minion") for i in range(4)]
+            [agent.Agent("tank minion") for i in range(8)]
             + [agent.Agent("caster minion") for i in range(6)]
         ),
-        10,
+        100,
     )

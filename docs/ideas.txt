@@ -1,0 +1,29 @@
+This is a file of appealing ideas I'd like to test or develop mechanics for.
+
+=======
+Variable-length rounds
+=======
+
+Remember Darth Maul vs Qui-gon and Obi-wan, how DM kicked OW away and soloed QG awhile, killing him? I currently don't have a great way of implementing that, and I think it could be good for major boss fights. It would have sucked if QG had won, "Hey thanks for cheerleading, Obi," but it turned out well.
+
+=======
+XP
+=======
+
+I've played D&D and White Wolf and mostly preferred the latter. One issue with the former is very thick levels that do a lot of things; I'd prefer more frequent, less impactful levels. A wizard's level 3 "Here's access to level 2 spells and 2 slots for them and +1 level 1 slot and +1 prepared spell and 2 new spells" could be split up into 5 separate purchases and upgrades of slots and 4 more for the spells, prep, and access; you could have a constant trickle of XP and gain something new every session. I think it'd be more fun, and more immersive: rather than your character being engulfed in yellow light and Ascending, they get a little fitter every day.
+
+However, I'm not sure how to do White Wolf's style while also encouraging/enforcing specialisation. Partly this is because Whiskey doesn't really have specialisation ("My character has high combat" "Oh hey, mine too"), which it might if I added social mechanics (which I'm reluctant to do) or other noncombat rules. So I was thinking of adding like Tank/Striker/Leader/Controller builds, specials that favour one role or another.
+
+But I need to workshop doing these in such a way that balance doesn't go crazy. Power is exponential in combat, loosely, so the XP cost for that should be exponential, I guess, if it's possible to buy at all. We want strikers to be able to buy damage more cheaply than tanks can, for example, and tanks to buy HP more cheaply. We could have separate spell paths, like you can only buy a level k+1 spell of any of those roles if you have a level k spell; so because you can only cast one spell at a time, better to specialise and have access to the top-level stuff, with maybe a few cross-class utility spells? I also don't really hate the notion of generalists, except that it'd be nice if not all characters looked basically the same. Compared with d20, a character with good defence and one with good offence are much less differentiated.
+
+=======
+MORE TRAITS
+=======
+
+Because more => more variety. Of course, it can mean information overload for a mechanic that isn't actually very important if they're all balanced, and I already have the simple ones, so these new ideas maybe belong in an expansion set.
+
+Clever/resourceful: "learns" an opponent's style during battle; combat increases every other turn to a max of +2.
+
+Something magicky: knows an additional spell.
+
+Noncombat traits: not really meaningful here since this is a combat engine. Still, I think it might be good to have for a complete game, because I think D&D is so focused on combat mechanics that it forces stories to be combat-heavy (or rather, primes the DM to design them that way) (calling him a DM rather than GM doesn't help), which means more social games become harder if not impossible to run. It would be simpler to learn if Whiskey's combat mechanics were adapted for social tasks ("I try to seduce her." "Okay, but it's like clashing: if you fail, she doesn't just ignore you, she tells her friends you're a creep too.") (that's actually not a bad idea), although there's something to be said for keeping combat and social modular.
