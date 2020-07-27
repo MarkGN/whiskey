@@ -73,7 +73,6 @@ class Agent:
                 # If we have >= 3 traits and one is obsessive, only the first is doubled
                 obsess = 1
 
-
     def __str__(self):
         return "Agent: " + str((self._traits[0], self._hp))
 
