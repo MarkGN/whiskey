@@ -1,4 +1,4 @@
-import unittest, agent, army
+import unittest, src.agent as agent, src.army as army
 
 
 class TestArmy(unittest.TestCase):

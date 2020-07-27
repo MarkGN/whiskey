@@ -1,10 +1,10 @@
 # import context
 import unittest
 
-from test_deck import TestDeck
-from test_army import TestArmy
+import tests.test_deck
+import tests.test_army
 
-TESTS = [TestArmy, TestDeck]
+TESTS = [tests.test_deck.TestDeck, tests.test_army.TestArmy]
 
 import sys
 

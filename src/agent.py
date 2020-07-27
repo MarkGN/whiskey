@@ -1,6 +1,6 @@
 # Methods and data pertaining to individual agents == characters
 import copy, json, random
-import special
+import src.special as special
 
 
 class Agent:

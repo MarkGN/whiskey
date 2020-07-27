@@ -1,4 +1,4 @@
-import deck, agent
+import src.deck as deck, src.agent as agent
 import random
 
 
