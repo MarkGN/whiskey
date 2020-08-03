@@ -24,6 +24,12 @@ Because more => more variety. Of course, it can mean information overload for a 
 
 Clever/resourceful: "learns" an opponent's style during battle; combat increases every other turn to a max of +2.
 
-Something magicky: knows an additional spell.
+Something magicky: knows an additional spell. Nerdy?
 
 Noncombat traits: not really meaningful here since this is a combat engine. Still, I think it might be good to have for a complete game, because I think D&D is so focused on combat mechanics that it forces stories to be combat-heavy (or rather, primes the DM to design them that way) (calling him a DM rather than GM doesn't help), which means more social games become harder if not impossible to run. It would be simpler to learn if Whiskey's combat mechanics were adapted for social tasks ("I try to seduce her." "Okay, but it's like clashing: if you fail, she doesn't just ignore you, she tells her friends you're a creep too.") (that's actually not a bad idea), although there's something to be said for keeping combat and social modular.
+
+=======
+GEAR
+=======
+
+An ammunition mechanic, where you can sink small amounts of money into consumable items that give one-off tactical boosts. I'm picturing grenades, RWBY's dust rounds, that sort of thing. The text would be along the lines of "Use enhanced ammo for a more powerful attack. Consume for +2 combat ueot."

@@ -7,18 +7,15 @@ class Agent:
 
     # load agents
     # TODO make it possible to load from multiple different lists, to permit multiple balances
-    # TODO make this work locally, not just from the test suite
-    # import os, sys
-    # sys.path.insert(1, os.path.join(sys.path[0], "../data"))
     f = open("data/agent.json")
     agent_types = json.load(f)
     # In a complete game, there'd be noncombat traits too
-    # I have about enough to give characters 2, and add Obsessive
     generic_traits = ["nimble", "obsessive", "quick", "strong", "tough"]
 
     def __init__(self, agent_type=None):
 
         # TODO: could we cut half of this and have the entire statblock just be agent_json?
+        # And then change all the getter/setters to get_stat(self, stat, ?value, ?diff)
         agent_json = copy.deepcopy(Agent.agent_types[agent_type])
         self._combat = agent_json["combat"]
         self._dmg = agent_json["damage"]
@@ -74,7 +71,7 @@ class Agent:
                 obsess = 1
 
     def __str__(self):
-        return "Agent: " + str((self._traits[0], self._hp))
+        return "Agent: " + str((self._traits, self._hp))
 
     def get_combat(self, battle_context):
         speed = (battle_context.turn_number == 0) and self.get_special("quick", 0)
@@ -83,14 +80,20 @@ class Agent:
     def get_hp(self):
         return self._hp
 
-    def set_hp(self, hp):
-        self._hp = hp
+    def set_hp(self, hp, diff=False):
+        if diff:
+            self._hp += hp
+        else:
+            self._hp = hp
 
     def get_mp(self):
         return self._mp
 
-    def set_mp(self, mp):
-        self._mp = mp
+    def set_mp(self, mp, diff=False):
+        if diff:
+            self._mp += mp
+        else:
+            self._mp = mp
 
     def has_special(self, special):
         return special in self._special.keys()
@@ -152,7 +155,7 @@ class Agent:
     def cast_spell(self, army, enemy_army):
         self.set_mp(self.get_mp() - 1)
 
-    # Actions include charge, defend, and cast
+    # Actions include charge, defend, and cast a given spell
     # TODO
     def choose_action(self, army, enemy):
         return "none"
@@ -162,5 +165,5 @@ class Agent:
         return (
             1.2 ** self._combat
             * self.get_hp()
-            * (2 * self._dmg["base"] + sum(m - 1 for m in self._dmg["mod"]))
+            * self.expected_dmg()
         )
