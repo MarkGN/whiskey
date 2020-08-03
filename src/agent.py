@@ -162,8 +162,4 @@ class Agent:
 
     # A lazy challenge rating type heuristic. May not work for extreme values; ignores specials
     def power_level(self):
-        return (
-            1.2 ** self._combat
-            * self.get_hp()
-            * self.expected_dmg()
-        )
+        return 1.2 ** self._combat * self.get_hp() * self.expected_dmg()
