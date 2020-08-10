@@ -40,7 +40,11 @@ Suppose the above duellists inflict 1d10 damage. We could instead take the to-hi
 
 * Of course, the d20 system's damage is not quite 1d10: critical hits score 2d10. If we try rolling 2d10 on a natural 20, or 1d10+(check mod 20), we don't have quite the same distribution. Again, Whiskey is not intended to have the exact same outcome distribution as d20.
 
-It remains to be playtested whether damage randomisation is necessary at all. In Battle for Wesnoth, a hit under given circumstances inflicts fixed damage, and that's a fine game. The only reason I include this at all is to prevent metagaming of the form "This type of monster takes 3 hits to kill, so one more and he's dead", which is fine in a strategy game like BfW but inappropriate in an RPG.
+It remains to be playtested whether damage randomisation is necessary at all. In Battle for Wesnoth, a hit under given circumstances inflicts fixed damage, and that's a fine game. The only reason I include this at all is to prevent metagaming of the form "This type of monster takes 3 hits to kill, so one more and he's dead", which is fine in a strategy game like BfW but inappropriate in an RPG. It might not even work in Whiskey, because traits mean that certain monsters are tougher than others, and the only reliable way to test is by burning off all their HP.
+
+Erratum: in the context of batched turns, I think modulo damage might in fact be slower than rolled, because the GM has to compute the damage for each clash sequentially; whereas if it were rolled, all rolls could be done concurrently. I'll probably discard this idea.
+
+Erratum: I'm also a bit of a fan of a low HP world, where characters have like 3 HP and each hit takes off 1; something like shoving someone into a wall rounds down to doing nothing.
 
 =======
 THE COMBAT STAT

@@ -69,3 +69,13 @@ Each faction (the players, friendly NPCs, enemies) should have their own deck of
 A player should only draw from their deck for a check they want to succeed; otherwise, reword the check or have an enemy perform it. The idea is that a player's good and bad luck should cancel out, which won't happen if the players draw all the low cards and the enemies draw all the high ones.
 
 I suggest splitting each deck into two halves, each with the values 1 through 26. When one half is used up, reshuffle that one and use the other. This way, action shouldn't block on shuffling, and the odds of extreme good or bad luck are even lower.
+
+If playing on a computer engine that doesn't handle cards elegantly, it's acceptable to roll d26. Note that this entails higher variance, so encounters should be tuned accordingly.
+
+=======
+EDGE CASES
+=======
+
+If multiple agents group up on one target, they just all clash one by one. There's so particular flanking bonus or anything. The interpretation of this is an intricately choreographed fight scene, with one hero ninja fighting off hordes of weaker ones; or the fighter manoeuvring around to prevent the enemies from exploiting their numbers. Unlike in d20, it's assumed that agents move around during fights with plenty of footwork, feinting, dodging, etc.
+
+If multiple agents group up on one who's almost dead, and some win and others don't, the losers don't get hit.
