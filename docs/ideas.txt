@@ -22,6 +22,20 @@ Casters are harder to gauge because of how spells scale. I guess l5 fireball is 
 
 A better question, though, is what I want for this. Suppose we declare players should get 1000XP in a session, scaling for their level. What does that actually mean? SGOTI advocates 2+ sessions per new ability, one for players to learn it, one to exploit it; but that's for D&D, where each level entails multiple new abilities. In Whiskey, a lot of the benefits of XP is simply increasing stats. Maybe, per session, players could get alternately +1 to some stat or learn a new ability?
 
+-------
+
+One point that's bothered me a little is a lack of granularity with the combat stat. In d20, suppose you have characters with 11 AC and +0 to-hit, ie each has 50% to hit any other. If one gets +3 AC and +3 to-hit, it now gets just under 2 hits to its opponents' 1. Under Whiskey, that same almost-2:1 ratio is from +4 combat. In other words, the d20 GM can hand out 6 separate +1 boons, whereas the Whiskey GM only 4. (Under d20, you might do the same from +5 AC and no to-hit, which is fewer boons and slower combat. You might also do +7 to-hit and +1 AC, for as many as 8 boons and faster combat, if still not as fast as Whiskey.)
+
+I'd like to be able to give out a constant trickle of small advances, so it would be nice to subdivide this. Of course, buying +1 HP is always an option; rather than the fighter getting 7 HP per level and levelling once per 3 sessions, give him +2 HP per session. However, +1 combat is intrinsically a pretty big deal. I don't want players to feel like it'd be too big an investment.
+
+Proposal: to split it up by case, viz by having 3 separate feats, "+1 when clashing 1v1, +1 when outnumbering, +1 when outnumbered". Once a player has all 3, they're incorporated into a flat +1 combat bonus. Now we have 12 boons. As long as each of these has an independent and exp-cost progression, most players will keep all 3 more or less in lockstep.
+
+-------
+
+D20 also has a lot of extra rules doing basically the same thing. Fighters get improved critical, critting on a nat 19 -- okay, but the result of that is usually just a modest damage bonus, so why not just give a modest damage bonus? Could it be that the extra rule is fun somehow? Certainly I could add such rules, possibly as advances at high XP; I'm not inclined to without playtesting, because it'd complicate and slow down the game, and unless it specifically seems like it'd be fun, I'd sooner just add a modest damage bonus.
+
+It could be something like people getting addicted to slot machines because of occasional big payouts. Not sure that's a healthy thing to aspire to though.
+
 =======
 MORE TRAITS
 =======
