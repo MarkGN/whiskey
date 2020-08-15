@@ -20,7 +20,7 @@ This idea was inspired by World of Warcraft's progressive percentage mechanic.
 NEGATIVE CONSEQUENCES
 =======
 
-Suppose, under d20, we have two duellists, each with AC 10 and +0 to-hit, who take turns attacking each other. On average, it takes two attack rolls and one damage roll per successful hit. Gameplay blocks on each die roll.
+Suppose, under d20, we have two duellists, each with AC 11 and +0 to-hit, who take turns attacking each other. On average, it takes two attack rolls and one damage roll per successful hit. Gameplay blocks on each die roll.
 
 From a gameplay perspective, it's not desirable that the action blocks too often: it slows the game down, prevents a flow state, and gives players more opportunity to become bored. From a story perspective, an epic duel in which characters stand there and take turns hacking at each other isn't particularly realistic or cinematic.
 

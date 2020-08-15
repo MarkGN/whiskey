@@ -24,7 +24,7 @@ A better question, though, is what I want for this. Suppose we declare players s
 
 -------
 
-One point that's bothered me a little is a lack of granularity with the combat stat. In d20, suppose you have characters with 11 AC and +0 to-hit, ie each has 50% to hit any other. If one gets +3 AC and +3 to-hit, it now gets just under 2 hits to its opponents' 1. Under Whiskey, that same almost-2:1 ratio is from +4 combat. In other words, the d20 GM can hand out 6 separate +1 boons, whereas the Whiskey GM only 4. (Under d20, you might do the same from +5 AC and no to-hit, which is fewer boons and slower combat. You might also do +7 to-hit and +1 AC, for as many as 8 boons and faster combat, if still not as fast as Whiskey.)
+One point that's bothered me a little is a lack of granularity with the combat stat. In d20, suppose you have characters with 11 AC and +0 to-hit, ie each has 50% to hit any other. If one gets +3 AC and +3 to-hit, it now gets just under 2 hits to its opponents' 1. Under Whiskey, that same almost-2:1 ratio is from +4 combat. In other words, the d20 GM can hand out 6 separate +1 boons, whereas the Whiskey GM only 4. (Under d20, you might also do +7 to-hit and +1 AC, for as many as 8 boons and faster combat, if still not as fast as Whiskey.)
 
 I'd like to be able to give out a constant trickle of small advances, so it would be nice to subdivide this. Of course, buying +1 HP is always an option; rather than the fighter getting 7 HP per level and levelling once per 3 sessions, give him +2 HP per session. However, +1 combat is intrinsically a pretty big deal. I don't want players to feel like it'd be too big an investment.
 
