@@ -6,6 +6,8 @@ Variable-length rounds
 
 Remember Darth Maul vs Qui-gon and Obi-wan, how DM kicked OW away and soloed QG awhile, killing him? I currently don't have a great way of implementing that, and I think it could be good for major boss fights. It would have sucked if QG had won, "Hey thanks for cheerleading, Obi," but it turned out well.
 
+Rather than upend the core mechanic, add a Staggering Blow ability or even choice: take -1 combat; on a success, the victim is thrown out of the wat and can't choose to engage next round, but can still defend.
+
 =======
 XP
 =======
@@ -15,6 +17,8 @@ I've played D&D and White Wolf and mostly preferred the latter, growth-wise. One
 However, I'm not sure how to do White Wolf's style while also encouraging/enforcing specialisation. Partly this is because Whiskey doesn't really have specialisation ("My character has high combat" "Oh hey, mine too"), which it might if I added social mechanics (which I'm reluctant to do) or other noncombat rules. So I was thinking of adding like Tank/Striker/Leader/Controller builds, specials that favour one role or another.
 
 But I need to workshop doing these in such a way that balance doesn't go crazy. Power is exponential in combat, loosely, so the XP cost for that should be exponential, I guess, if it's possible to buy at all. We want strikers to be able to buy damage more cheaply than tanks can, for example, and tanks to buy HP more cheaply. We could have separate spell paths, like you can only buy a level k+1 spell of any of those roles if you have a level k spell; so because you can only cast one spell at a time, better to specialise and have access to the top-level stuff, with maybe a few cross-class utility spells? I also don't really hate the notion of generalists, except that it'd be nice if not all characters looked basically the same. Compared with d20, a character with good defence and one with good offence are much less differentiated.
+
+*One way would be paths that offer related XP discounts, "Path of the fighter: fighter perks get 1/3 XP cost off", where you can only have one path or a path itself costs significant XP.
 
 In D&D, a level 5 fighter has roughly 2.5* the DPS of a level 1, and 2.5* the HP, and probably a little more armour by virtue of buying splint/plate/whatever and finding magic items. So 4 levels to *=2.5, suggesting +30% per level or so. OTOH, each successive level seems to do more than the previous: other than HP and gold, l2 just gives action surge, once per combat; l3 gives improved crits worth about +6% DPS; l4 gives ~+20% DPS, +1 to-hit being worth +10% and +1 damage being about +9%; and l5 gives 2 attacks per round, fully doubling it, which seems a ludicrous power spike.
 
@@ -42,7 +46,7 @@ MORE TRAITS
 
 Because more => more variety. Of course, it can mean information overload for a mechanic that isn't actually very important if they're all balanced, and I already have the simple ones, so these new ideas maybe belong in an expansion set.
 
-Clever/resourceful: "learns" an opponent's style during battle; combat increases every other turn to a max of +2.
+Clever/resourceful: "learns" an opponent's style during battle; combat increases every other turn to a max of +2. Could even make this a core mechanic somehow, encouraging players to hold off on special attacks.
 
 Nerdy: knows an additional spell.
 
@@ -75,6 +79,25 @@ Swansong: if a character's avatar is about to die, in a context where this entai
 
 Vampirism: on a hit, recover 1hp
 
+-------
+
+I thought about the MtG personality types, Timmy Johnny Spike. Suppose I did the same with abilities: flashy nova powers, ones with synergies or weird interactions, and efficient ones. I was already thinking I should include support spells because Alistair likes them, but extend that line of thought.
+
+Timmy: big stat boosts
+
+Johnny: tracker/killer mechanics. You could do interesting things with multi-PC combos, team attacks, rainbow spells.
+
+Spike: smaller but more efficient stat boosts? Regeneration? Summons? Counterspells even? Token drain?
+
+Can I take anything else from TCGs? MtG skill involves guessing the opponent's loadout, things like not casting bruisers when you think the opponent has a counterspell; which suggests a certain amount of poker bluffing, and abilities with specific counters.
+
+Roshambo blitz: gain +3 combat ueot. Your sigil is scissors ueot. (You get +5 combat and +1 damage vs any opponent whose sigil is paper.)
+-- This only makes sense if players have some capacity to predict an opponent's play and tune their loadout, like MtG players can tune decks (preparing spells? wands of ability?).
+
+Colour drain: pick a colour. All abilities using tokens of that colour do nothing ueot. Gain +1 combat per token wasted. This ability can't be countered.
+
+Lots of games have no-brainer mechanics, like playing lands in MtG. In some sense, removing those mechanics streamlines them. In another, it means you're not learning mechanics. A conundrum.
+
 =======
 NONCOMBAT MECHANICS
 =======
@@ -83,10 +106,48 @@ I wrote above that social checks would trigger clashes, but that's not true. A c
 
 Suppose you want to run a game where boy PCs can ask girl NPCs out. (I've played/run 3 games with (attempted) seduction, so as creepy as the question is, it's not unreasonable.) In combat, there's a fairly intuitive ordering of better to worse, in that a better fighter is both harder to kill and better at killing (even if you separate armour and to-hit stats, there's still HP*expected_DPS/expected_incoming_DPS: a well-armoured fighter is good at killing because he'll last long enough to keep trying); but you might have some girls who just aren't interested, so they're hard to ask out, but they're not particularly good at asking anyone else out themselves.
 
-This suggests that maybe I should reframe the question. If a girl wants to go out with someone, no clash is triggered, because the two parties have coaligned interests. If she has other plans, no amount of PC charm will be effective. The fun is if she's ambivalent: if she'd like a date, but she has high standards that the PC may or may not meet. If the PC declares, "I talk her into going home with me," the issue is that that isn't mutually exclusive with her "I don't go home with just anyone." She doesn't not want to go home with them; and if they try to convince her that they meet her standards, she doesn't not want to believe they meet her standards.
+This suggests that maybe I should reframe the question. If a girl wants to go out with someone, no clash is triggered, because the two parties have coaligned interests, the same as if you attack someone who doesn't fight back or defend themselves. If she has other plans, no amount of PC charm will be effective. The fun is if she's ambivalent: if she'd like a date, but she has high standards that the PC may or may not meet. If the PC declares, "I talk her into going home with me," the issue is that that isn't mutually exclusive with her "I don't go home with just anyone." She doesn't not want to go home with them; and if they try to convince her that they meet her standards, she doesn't not want to believe they meet her standards.
 
-I feel like a clash simply isn't the right mindset. That's for two agents with mutually exclusive objectives. Social interactions don't have mutual exclusion; they're more about trust, about deciding whether you believe the other person or your interests really are coaligned. I guess you could model it as convincingness = charisma + sincerity + d26, checked against an arbitrary scepticism value that she can set as high as she likes. The problem with this idea is that there's no mechanic by which a high-level NPC could distinguish charisma from reality.
+I could try to wrangle it, but I feel like a clash simply isn't the right mindset. That's for two agents with mutually exclusive objectives. Social interactions don't have mutual exclusion; they're more about trust, about deciding whether you believe the other person or your interests really are coaligned. I guess you could model it as convincingness = charisma + sincerity + d26, checked against an arbitrary scepticism value that she can set as high as she likes. The problem with this idea is that there's no mechanic by which a high-level NPC could distinguish charisma from reality.
 
 What I'd really want is something such that a PC's odds increase with his charisma; sincerity; the girl's interest; and her talent as a judge of character. Maybe clash min(charisma, interest) + min(sincerity, judge of character) vs standards?
 
-I observe that clashes should work pretty seamlessly for stealth checks, since the infiltrator and sentry are directly clashing. I'd be inclined to give a nice bonus to sneaking, in the same way that I'd allow defensive fighting that gets something huge like +10, because the consequences are so asymmetric. I think it's probably healthy to have multiple stealthing states, viz unknown/suspected/known/spotted, so that there are multiple checks with limited amounts riding on each, much like how a single combat check does not determine victory or death.
+I observe that clashes should work pretty seamlessly for stealth checks, since the infiltrator and sentry are directly opposed. I'd be inclined to give a nice bonus to sneaking, in the same way that I'd allow defensive fighting that gets something huge like +10, because the consequences are so asymmetric. I think it's probably healthy to have multiple stealthing states, viz unknown/suspected/known/spotted, so that there are multiple checks with limited amounts riding on each, much like how a single combat check does not determine victory or death.
+
+=======
+RANDOM DAMAGE
+=======
+
+I'm not a fan of outcome randomness: telling someone "You lose, even though you made good decisions", or even "You get a disadvantageous position", is never satisfying. That's part of the logic behind using cards for checks.
+
+In some games, a wizard might gain d6 HP and d6 MP per level. The issue is, some will gain 1,1 and be unfairly weak, and others will gain 6,6 and be unfairly strong. My counterproposal is to let x <- d6 and he gains x HP and 7-x MP. If HP and MP are equally useful, his stats are still randomised, but imbalanced outcomes are prevented. You could let x <- d4 and give x+d3-1 HP and 4+d3-x MP, if you wanted a larger pool of possible values and figured being 1 or 2 points better or worse isn't a big deal.
+
+We could do the same for damage randomisation. Rather than sometimes inflict 3 damage and sometimes 7, it could be 7 sometimes and at others, 3 and -4 combat for the next round, denoting being kicked/tripped/winded/disarmed/etc. Variable damage = base + x, combat penalty is (max x)-x. Might be a lot of extra compute and/or state to track, though. It's not hugely realistic to fiat that heavier hits give less stunlock, but you can flavour that as eg leg sweeps.
+
+=======
+MANA, OR NOT; DANCE MAGIC
+=======
+
+I think mana is more sensible than spell slots, the latter being rather complicated and I suspect more informed by Gygax's love of Vance than principles of game design. I do have to admit that spell slots do at least force casters to use more than one spell.
+
+Still, mana and slots aren't the only ways to effect a resource management mechanic. There's also blood magic, wherein spells are cast from HP (which seems like it would give very meaningful choices), or maybe combat or damage stats; and exhaustion magic, wherein an agent gets a combat malus if low on energy, so as to encourage holding off. There's also WoW's rage mechanic, wherein it regenerates by fighting. I like this: mechanics should reward players for doing fun things/moving the action along, not for things like the five minute workday, which mana and slots both induce. So does HP, for that matter, to some extent, which makes extra work for the GM to invent time pressure.
+
+I have a vague idea of something I term dance magic, in terms of how I want it to feel, wherein players shift from one tactic to another, building up over a fight, like freestyle dancers beginning with basic steps, then adding twirls and getting progressively more elaborate over the course of a song. My working idea for implementation is that different actions cost and generate different-coloured tokens, all of which reset at the start of a battle: mundane attacks give a white token, basic spells cost a white token and generate a red, advanced spells cost a red and a white. Different colours for different schools of magic, which would favour specialists within a school, since they could freely use all their advanced spells; and maybe dark tokens (scarlet vs pink) for ultimates. Agents thus can't open with their strongest attacks.
+
+It could make certain spells objectively hard to cast. You want to raise the dead? Sure, all you have to do is have your healer go 15 rounds without either ending the battle prematurely or himself dying. This possibility intrigues me; it means it's never a "whatever, we'll revive you on our day off" situation, where you can freely use mana-heavy spells just as long as you don't do anything else. It also means kaiju fights are likely to be as epic as they deserve. It means there's no conception of hot and cold magic.
+
+I'd like some mechanic that specifically counters being predictable, so as to discourage spamming. eg you can guess the opponent's next move and get +2 combat if correct; but I'm aware of the speed/simplicity/fun vs game/realism and story tradeoff.
+
+Dance magic could make stealth much more viable. It normally kind of sucks, but if it let players charge up for even one turn, that means they can get their ultimate abilities off a turn before their enemies.
+
+=======
+SPLASH DAMAGE
+=======
+
+I haven't had any great ideas about area effect, largely because I couldn't think of anything that was balanced, similar to clashes, and wouldn't take a zillion checks.
+
+One possibility is to rule that, on a successful clash, a splasher simply also hits one or two extra enemies. It's a little weird -- what if one is way harder to hit? -- but that's not the end of the world. It could be a rule that you hit them if and only if the same check would work against them, so a high-combat enemy might be able to dodge even when his buddies are hit.
+
+I'm a little reluctant to use saving throws based on a stat other than combat, because that will make nimble underpowered compared with tough; but I could just rebalance those, or I could use a combat-based save, or even something else modified by those traits. (For example, threat probably shouldn't affect most spell saves.) 
+
+If splash attacks are significantly more powerful than generic attacks, counting all targets, then half damage could be balanced. Normally, a check decides which of two parties will be damaged, so there's a swing of 2* your damage; so you could have splashes that take 3 turns to charge, inflict 4* normal damage on a hit (split between multiple targets) or 2* on a save, and require a build that's so much weaker that the fact that they don't take damage in return is mitigated. Or maybe the need to be defended would be enough balance? After all, they don't exist in a vacuum.

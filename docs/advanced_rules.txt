@@ -1,0 +1,14 @@
+
+=======
+SPECIAL ATTACKS
+=======
+
+Ordinarily, when you attack someone, it's assumed you mean to attack full power to centre mass. You can also choose to do fancy stuff at a combat penalty.
+
+Headshot: -5 combat; a hit inflicts double damage.
+
+Pin: -8 combat and you can't use a weapon's combat bonus but the opponent loses worn armour bonus; a hit inflicts no damage but pins the opponent. A pinned agent can't attack or defend themselves (attacks automatically hit) or move while the pin is maintained. If a third party attacks the agent performing the pin, the pinner must either break the pin immediately or defend at -3 combat, and a fail breaks the pin. Better not try to pin if enemies are likely to interrupt it.
+
+Pulled punch: -2 combat and you can't use a weapon's combat bonus; a hit knocks an opponent down and out, rather than killing.
+
+Sneak attack: if an opponent doesn't know they're being attacked, +5 combat and a hit's damage randomiser inflicts the maximum.
