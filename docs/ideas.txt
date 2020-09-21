@@ -1,12 +1,27 @@
 This is a file of appealing ideas I'd like to test or develop mechanics for.
 
 =======
+CONTENTS
+=======
+
+Variable-length rounds
+XP
+More traits
+Gear
+Spells
+Noncombat mechanics
+Random damage
+Dance magic
+Splash damage
+Refactoring
+
+=======
 Variable-length rounds
 =======
 
 Remember Darth Maul vs Qui-gon and Obi-wan, how DM kicked OW away and soloed QG awhile, killing him? I currently don't have a great way of implementing that, and I think it could be good for major boss fights. It would have sucked if QG had won, "Hey thanks for cheerleading, Obi," but it turned out well.
 
-Rather than upend the core mechanic, add a Staggering Blow ability or even choice: take -1 combat; on a success, the victim is thrown out of the wat and can't choose to engage next round, but can still defend.
+Rather than upend the core mechanic, add a Staggering Blow ability: take -1 combat; on a success, the victim is thrown out of the way and can't choose to engage next round, but can still defend.
 
 =======
 XP
@@ -22,7 +37,7 @@ But I need to workshop doing these in such a way that balance doesn't go crazy. 
 
 In D&D, a level 5 fighter has roughly 2.5* the DPS of a level 1, and 2.5* the HP, and probably a little more armour by virtue of buying splint/plate/whatever and finding magic items. So 4 levels to *=2.5, suggesting +30% per level or so. OTOH, each successive level seems to do more than the previous: other than HP and gold, l2 just gives action surge, once per combat; l3 gives improved crits worth about +6% DPS; l4 gives ~+20% DPS, +1 to-hit being worth +10% and +1 damage being about +9%; and l5 gives 2 attacks per round, fully doubling it, which seems a ludicrous power spike.
 
-Casters are harder to gauge because of how spells scale. I guess l5 fireball is worth about 2.5 l1 burning hands. The rogue begins at 3+d6+(d6 if sneak); approxing d6 as 3 and assuming crits, he has 9 -> 9 -> 12 -> 13 (+1 to-hit) -> 16 (+2 to-hit), comparable to 21, so again, about 2.5*, here with a somewhat smoother progression.
+Casters are harder to gauge because of how spells scale. I guess l5 fireball is worth about 2.5 l1 burning hands. The rogue begins at 3+d6+(d6 if sneak); approxing d6 as 3 and assuming sneaks, he has 9 -> 9 -> 12 -> 13 (+1 to-hit) -> 16 (+2 to-hit), comparable to 21, so again, about 2.5*, here with a somewhat smoother progression.
 
 A better question, though, is what I want for this. Suppose we declare players should get 1000XP in a session, scaling for their level. What does that actually mean? SGOTI advocates 2+ sessions per new ability, one for players to learn it, one to exploit it; but that's for D&D, where each level entails multiple new abilities. In Whiskey, a lot of the benefits of XP is simply increasing stats. Maybe, per session, players could get alternately +1 to some stat or learn a new ability?
 
@@ -151,3 +166,45 @@ One possibility is to rule that, on a successful clash, a splasher simply also h
 I'm a little reluctant to use saving throws based on a stat other than combat, because that will make nimble underpowered compared with tough; but I could just rebalance those, or I could use a combat-based save, or even something else modified by those traits. (For example, threat probably shouldn't affect most spell saves.) 
 
 If splash attacks are significantly more powerful than generic attacks, counting all targets, then half damage could be balanced. Normally, a check decides which of two parties will be damaged, so there's a swing of 2* your damage; so you could have splashes that take 3 turns to charge, inflict 4* normal damage on a hit (split between multiple targets) or 2* on a save, and require a build that's so much weaker that the fact that they don't take damage in return is mitigated. Or maybe the need to be defended would be enough balance? After all, they don't exist in a vacuum.
+
+=======
+REFACTORING
+=======
+
+Thinking about MtG and their use of keyword mechanics, I should do some of that; it's more elegant than writing the rules out in full each time. I could also use theirs as inspiration. There are others; these are the ones that look likeliest to be easily balanced and effected, and generally fun.
+
+Defender: may not initiate a clash. May stand its ground.
+
+First strike (or ranged) n: this gets +n on a clash with an opponent when you begin outside their range.
+
+Flying: may not be intercepted or pursued except by other flyers or those with range.
+
+Hexproof, shroud: can't be targeted by abilities, be it enemy or all
+
+Lifelink: vampirism. Should have a limit to prevent infinite combat, eg recover up to damage inflicted -1.
+
+Protection n: +n vs certain opponents.
+
+Trample n: trample past up to n interceptors. cf Stalwart n, may intercept up to n additional enemies; understanding that these effects cancel each other.
+
+Absorb n: reduce incoming damage by n, to a minimum of 1
+
+Cascade: of a spell, also cast a cheaper spell for free
+
+Cipher: you may encode this on an agent, and whenever it clashes or attacks, cast the spell again for free
+
+Poison n t: on a hit, the target takes n damage per round for t rounds
+
+Regenerate
+
+Suspend n: trigger now, reach fruition in n
+
+Wither n: targets get -n combat on being hit by this, non-stacking. Or -1 per round up to n.
+
+MtG has dozens of keywords, many of which are interesting enough that I'd be delighted to plagiarise them, but which I can't see how to implement them without making it into a card game, which would violate the design goal of running on commodity hardware. General points are spells castable from the graveyard; discard effects; dredge, anything else interacting with the GY; anything that assumes you'll have a bunch of creatures in play; and anything involving card (dis)advantage, which includes things like entwine where you can pay more to get more out of a card or flashback or kicker or madness. Entwine could still do a little, letting you use two abilities in one turn?
+
+=======
+NOTE TO SELF
+=======
+
+Checking combat plus d26 vs combat plus 13 entails that awkward +13. A better idea is, rather than label cards 1--26, label them -12--13; or equivalently, 1--13 and tell the drawer to subtract 13 from their total on a black card. Now the GM doesn't have to remember combat+13 for every enemy on screen, and the players don't have to bitch about figuring it out for themselves.

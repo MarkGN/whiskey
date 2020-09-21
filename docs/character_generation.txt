@@ -1,0 +1,31 @@
+This document describes methods for creating NPCs, which can be co-opted for making PCs if whoever controls them feels uninspired. Because the sorts of character one might reasonably expect to see depends on the setting, this is indexed that way, with a contents section. (I know, YAGNI.) In all cases, discard obviously irrelevant information and anything you just don't like.
+
+=======
+CONTENTS
+=======
+
+Modern Urban
+
+=======
+MODERN URBAN
+=======
+
+Roll 2d6 and take the larger: this is how many living immediate family members they had as of age 12. This can include either or both parents and up to four children, your pick. Typically, the number of children will be 1,1,1/2,2,3,4 respectively. (We use 2d6 because you're likelier to be part of a larger family on account of them being larger.)
+
+Alternatively, roll 2d6. On 2--5 there's 1 child, 6--7 2, 8--9 3, 10 4, 11 5, 12 6. In a class of 24, that makes about 7, 7, 6, 2, 1, 1.
+
+Pick two hobbies. If you don't have ideas of your own, randomise from the following list and then sublists. If both lists have a shared entry, take that too.
+Art (painting/drawing, writing, modelling, dance/gymnastics, music, photography)
+Home (adopting cats, cooking, gardening, knitting, mechanical/computer maintenance, yoga)
+Pop culture (celebrity gossip, literature, memes, music, movies/TV, video games)
+Scholastics (foreign languages, geography/history, literature, music, programming, science)
+Sport (bicycling, tennis/baseball, soccer/basketball, martial arts, running/swimming, dance/gymnastics)
+Other (travel, Japanese tea ceremony, conspiracy theories/the occult, politics, TTRPGs, urban legends)
+
+Pick two traits from the relevant list. Ask the GM if you want to get creative or possibly re-skin an existing trait. Try to pick ones relevant to your interests, although no pressure: you can be enthusiastic but bumbling.
+
+Strong characters I can think of include Potter's Hermione, Luna, Again's Roger, Charlotte, Sue, Jason, Michelle, Future Diary's Yuno, Neon Genesis's Asuka, Shinji, Rei, all four members of Charlotte, Angel Beats's Yui, Otonashi, Naoi, Sailor Zero's journalist, Shinsekai's Satoru, the entire cast of Savage Season, Bob's Burgers's Louise, Tina, Tammy, Daria's Daria, Undertale's everyone, Homestuck's Dave, Rose, Dirk, Roxy, Worm's Riley ...
+
+bossy studious airy credulous dedicated serious sweet genki geeky puns self-comfortable motivated bossy sweet psycho bossy insecure conciliatory stoic 
+
+I could always do basic Big Five or HEXACO traits. Pick 2--4 high traits, the others low; that gives 50 distinct personalities.
