@@ -2,10 +2,8 @@
   "PC": {
     "combat": 10,
     "hp": 15,
-    "damage": {
-      "fixed": 1,
-      "mod": [5]
-    }
+    "damage_base": 4,
+    "damage_die": 1
   },
 
   "tank minion": {
