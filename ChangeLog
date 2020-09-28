@@ -1,0 +1,11 @@
+## 0.2 - 2020
+### Added
+- the Character class
+- filled out docs
+### Changed
+- re-label cards to be from -12 to +13 rather than 1 to 26, and make checks (stat+card vs stat) rather than (stat+card vs stat+13) [the +13 is extra computation; hopefully subtraction won't make things too much harder]
+- replace modulo damage with d6 with optional scaling [modulo was too much work for a GM in practice]
+- general stat changes, additional or modified special and spell content
+
+## 0.1 - early 2020
+Initial ideas: card-based checks, modulo-based damage, asymmetric clashes, very limited spellwork
