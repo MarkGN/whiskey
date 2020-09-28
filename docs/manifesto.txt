@@ -1,4 +1,4 @@
-This file is intended to explain the design decisions behind Whiskey. It's heavily inspired by the d20 system, raising the question of why not just use d20, especially considering the latter's extensive published materials.
+This file explains the design decisions behind Whiskey. It's heavily inspired by the d20 system, raising the question of why not just use d20, especially considering the latter's extensive published materials.
 
 The following is heavily opinionated and unqualified. I understand that game design has no right or wrong answer; these decisions are made against features of d20 that I personally find to detract from the experience.
 
@@ -8,11 +8,11 @@ CARDS VS DICE
 
 When checks are mediated by dice, there's a non-negligible chance of a streak of luck, good or bad. Either is undesirable from a design perspective: they make a well-balanced encounter either boringly easy or frustratingly hard. Nobody likes a dice-driven TPK. By using cards, we can sample without replacement, and thereby reduce the variance without making outcomes wholly predictable. This helps the GM control an encounter.
 
-An additional benefit is that, by using a standard playing deck and splitting cards by colour, we have 26 possible values. This reduces the impact of a +1, which means a scenario may be designed to give them out more freely, which is always fun. I'd split the deck by suit so we could go up to 52, but I don't want to rely on everyone being able to mentally calculate +26 or +39 every other turn. We could use custom-printed cards, and it would be nice to be able to just read 22 rather than have to parse 9 of hearts, but it's a big advantage using standardised hardware. Players can always just draw on a spare deck with a marker pen.
+An additional benefit is that, by using a standard playing deck and splitting cards by colour, we have 26 possible values rather than only 20. This reduces the impact of a +1, which means a scenario may be designed to give them out more freely, which is always fun. (+1 combat with 26 values is less impactful than +1 combat with 20 values. It's more impactful than +1 to-hit or +1 AC.) I'd split the deck by suit so we could have a range of 52, but I don't want to rely on everyone being able to mentally calculate +26 or -25 every other turn. We could use custom-printed cards, and it would be nice to be able to just read 11 rather than have to parse jack of hearts, but it's a big advantage using standardised hardware. Players can always just draw on a spare deck with a marker pen.
 
-One possible issue is that players could metagame by way of card counting; or possibly even by preceding an encounter with junk checks, hoping to use up the bad cards, and cycling the deck if instead they use the good checks. It remains to be tested whether this is likely in practice, or whether it's a feature or a flaw: it is technically a method by which a skilful player could do better than average. To prevent the junk checking exploit, decks could be shuffled at the start of major engagements, or at GM discretion.
+One possible issue is that players could metagame by way of card counting; or possibly even by preceding an encounter with junk checks, hoping to use up the bad cards, and cycling the deck if instead they use the good checks. It remains to be tested whether this is likely in practice, or whether it's a feature or a flaw: it is technically a method by which a skilful player could do better than average. To prevent the junk checking exploit, decks could be shuffled at the start of major engagements, or at GM discretion. At time of writing, the game has only been tested digitally with d26, rendering this entire point moot.
 
-A GM might incorporate this idea into d20 by setting aside royal cards and declaring that red suits are worth only +10, not +13.
+A GM might incorporate this idea into d20 by setting aside royal cards and declaring that red suits are worth +10, so as to reduce variance.
 
 This idea was inspired by World of Warcraft's progressive percentage mechanic.
 
@@ -28,23 +28,17 @@ Instead of asking whether a given attack hits, we could ask the question: who wi
 
 A mathematician could show that whoever attacks first has 2/3 chances to land the next hit; the defender has 1/3; and after each hit, the one who was hit last has 2/3 chances. We could therefore simply roll 1d6 and declare the attacker hits on 3-6 and the defender on 1-2, reversing the odds each time the attacker lands a hit. This saves one roll per successful hit. In practice, we would use a d20 and say that whoever has initiative has +3, or +4 with the card-drawing method, which give odds of 65% and 65.38% rather than 66.67%.
 
-As a design decision, I don't in fact give an initiative bonus, because it seems like complexity that doesn't add to gameplay or story, and my objective is not to duplicate d20 outcomes, so much as to produce outcomes that look credible enough for a good game. There is a Quick special that grants the bonus in the first round of a fight, denoting winning initiative.
+As a design decision, I don't in fact give an initiative bonus, because it seems like complexity that doesn't add to gameplay or story, and my objective is not to duplicate d20 outcomes, so much as to produce outcomes that look credible enough for a good game. There is a Quick special that grants the bonus in the first round of a fight, denoting winning initiative. I may in future give +4 to whoever lost the previous round, because it would reduce the variance of a given fight, and thus the risk of things like TPK.
 
 =======
-MODULO ARITHMETIC DAMAGE
+D6 DAMAGE
 =======
 
-This is similar to the negative consequences argument: by computing damage from the attack directly, rather than require an additional roll, we speed the game up.
+This is similar to the negative consequences argument: by rolling damage at the same time as performing the check, we speed the game up. 
 
-Suppose the above duellists inflict 1d10 damage. We could instead take the to-hit check value mod 10 + 1; this saves a roll, and calculating remainders of low modulo values is easy mental arithmetic. If we don't use an initiative bonus, this has the same distribution as 1d10* without requiring an additional roll. With d20 and +3, if the attacker wins, they inflict rand(11,23) mod 10 + 1 damage, with an expected value of 4.92 damage; if the defender, they inflict rand(4,10) mod 10 + 1, expecting 5.28 damage. Using d10, the value for both would be 5.5. In general, this method is not uniformly random. It remains to be playtested whether this is a flaw; if so, we can simply use damage rolls as in d20.
+A d6 has somewhat less flexibility than arbitrary Platonic dice, but not much is lost in terms of game balance. For example, a D&D attack for d12 damage can be approximated by d6+3, with the same expected damage, albeit narrower support and lower variance.
 
-* Of course, the d20 system's damage is not quite 1d10: critical hits score 2d10. If we try rolling 2d10 on a natural 20, or 1d10+(check mod 20), we don't have quite the same distribution. Again, Whiskey is not intended to have the exact same outcome distribution as d20.
-
-It remains to be playtested whether damage randomisation is necessary at all. In Battle for Wesnoth, a hit under given circumstances inflicts fixed damage, and that's a fine game. The only reason I include this at all is to prevent metagaming of the form "This type of monster takes 3 hits to kill, so one more and he's dead", which is fine in a strategy game like BfW but inappropriate in an RPG. It might not even work in Whiskey, because traits mean that certain monsters are tougher than others, and the only reliable way to test is by burning off all their HP.
-
-Erratum: in the context of batched turns, I think modulo damage might in fact be slower than rolled, because the GM has to compute the damage for each clash sequentially; whereas if it were rolled, all rolls could be done concurrently. I'll probably discard this idea.
-
-Erratum: I'm also a bit of a fan of a low HP world, where characters have like 3 HP and each hit takes off 1; something like shoving someone into a wall rounds down to doing nothing.
+I'm not entirely happy with this, because the general argument against dice as being too random still applies. It's the fastest sane idea I've had, and it mostly doesn't matter that much: even if you consistently roll low and your enemies roll high, damage bonuses mean you're unlikely to lose a fight unless it already would have been very close.
 
 =======
 THE COMBAT STAT
@@ -66,4 +60,4 @@ A turn-based system also breaks the immersion of a large battle, because charact
 
 Batching prevents players from planning in response to other players' outcomes, which should hopefully reduce dead time. It also means players are moving at the same time in-story, which should improve immersion.
 
-Finally, by having all characters make checks at the same time, we cut the time spent blocked even further. An encounter with 5 players fighting 5 NPCs might block 10-20 times per round under d20; but between batching, negative consequences, and modulo damage, Whiskey only needs 1 block per round.
+Finally, by having all characters make checks at the same time, we cut the time spent blocked even further. An encounter with 5 players fighting 5 NPCs might block 10-20 times per round under d20; but between batching, negative consequences, and concurrent damage rolls, Whiskey only needs 1 block per round.

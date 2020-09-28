@@ -1,9 +1,15 @@
-# Methods and data pertaining to individual agents == characters
+# Methods and data pertaining to individual agents
 import copy, json, random
 import src.special as special
 
 
 class Agent:
+
+    combat = hash("combat")
+    damage_base = hash("damage_base")
+    damage_die = hash("damage_die")
+    hp = hash("hp")
+    mp = hash("mp")
 
     # load agents
     # TODO make it possible to load from multiple different lists, to permit multiple balances
@@ -14,12 +20,11 @@ class Agent:
 
     def __init__(self, agent_type=None):
 
-        # TODO: could we cut half of this and have the entire statblock just be agent_json?
-        # And then change all the getter/setters to get_stat(self, stat, ?value, ?diff)
+        # TODO: change all the getter/setters to get_stat(self, stat, ?value, ?diff)
         agent_json = copy.deepcopy(Agent.agent_types[agent_type])
-        self._combat = agent_json["combat"]
-        self._dmg = agent_json["damage"]
-        self._max_hp = self._hp = agent_json["hp"]
+        self.stats=self.max_stats={}
+        for stat in agent_json["stats"]:
+            self.max_stats[stat] = self.stats[stat] = agent_json["stats"][stat]
         if "special" in agent_json.keys():
             _special = agent_json["special"]
             for k in _special.keys():
@@ -27,10 +32,9 @@ class Agent:
                     try:
                         _special[k] = special.agent_specials[k]
                     except:
+                        _special.pop(k,None)
                         raise Exception("Failed to parse special called " + k)
-                        # _special.pop(k,None)
-            # self._special = {hash(k): _special[k] for k in _special.keys()}
-            self._special = _special
+            self._special = {hash(k): _special[k] for k in _special.keys()}
         else:
             self._special = {}
         if "mp" in agent_json.keys():
@@ -53,47 +57,51 @@ class Agent:
                 # possibly also empower spells somehow?
                 self._mp += obsess * (self._mp + 2) // 5
             elif trait == "nimble":
-                self._combat += obsess
+                self.set_stat(Agent.combat, 1, True)
             elif trait == "quick":
                 self._special["quick"] = obsess * special.agent_specials["quick"]
             elif trait == "strong":
-                e = self.expected_dmg()
-                self._dmg["fixed"] += obsess * e // 5
-                if (obsess * e) % 5 >= 2:
-                    if self._dmg["mod"]:
-                        self._dmg["mod"][-1] += obsess
-                    else:
-                        self._dmg["mod"] = [1 + obsess]
+                # Note: currently unbalanced: does not scale
+                self.set_stat(Agent.damage_base, obsess*self.expected_dmg()*2//7)
             elif trait == "tough":
-                self._hp += obsess * (self._hp + 2) // 5
+                self.set_stat(Agent.hp, obsess * (self.get_stat(Agent.hp) + 2) // 5 )
             if trait != "obsess":
                 # If we have >= 3 traits and one is obsessive, only the first is doubled
                 obsess = 1
 
     def __str__(self):
-        return "Agent: " + str((self._traits, self._hp))
-
-    def get_combat(self, battle_context):
-        speed = (battle_context.turn_number == 0) and self.get_special("quick", 0)
-        return self._combat + speed
-
-    def get_hp(self):
-        return self._hp
-
-    def set_hp(self, hp, diff=False):
+        return "Agent: " + str((self._traits, self.get_stat(Agent.hp)))
+    
+    def get_stat(self, stat, battle_context=None):
+        if stat == Agent.combat:
+            if battle_context and (battle_context.turn_number == 0) and self.get_special("quick", 0):
+                return self.stats[Agent.combat] + self.get_special(hash("quick"))
+        return self.stats[stat]
+    
+    def set_stat(self, stat, value, diff=False):
         if diff:
-            self._hp += hp
+            self.stats[stat] += value
+            self.max_stats[stat] += value
         else:
-            self._hp = hp
+            self.stats[stat] = value
+            self.max_stats[stat] = value
 
-    def get_mp(self):
-        return self._mp
-
-    def set_mp(self, mp, diff=False):
+    # eg losing HP or MP, stat drain or bolster
+    # TODO make it so that this can't erase bonus HP when clamped
+    def set_temp_stat(self, stat, value, diff=False, clamped=False):
         if diff:
-            self._mp += mp
+            self.stats[stat] += value
         else:
-            self._mp = mp
+            self.stats[stat] = value
+        if clamped:
+            self.stats[stat] = min(self.max_stats[stat], max(0, self.stats[stat]))
+    
+    def pay_stat(self, stat, value):
+        if self.get_stat(stat) < value:
+            return False
+        else:
+            self.set_temp_stat(self, stat, -value, True)
+            return True
 
     def has_special(self, special):
         return special in self._special.keys()
@@ -106,41 +114,27 @@ class Agent:
 
     def harm(self, damage):
         if damage > 0:
-            self.set_hp(self.get_hp() - damage)
+            self.set_temp_stat(Agent.hp, -damage, True)
 
     def recover_hp(self, hp):
         if hp > 0:
-            self.set_hp(min(self._max_hp, self.get_hp() + hp))
+            self.set_temp_stat(Agent.hp, hp, True, True)
 
     def expected_dmg(self):
-        return self._dmg["fixed"] + sum((d - 1 for d in self._dmg["mod"])) // 2
+        return self.get_stat(Agent.damage_base) + 7*self.get_stat(Agent.damage_die)//2
 
     def is_alive(self):
-        return self._hp > 0
+        return self.get_stat(Agent.hp) > 0
 
     def hit(self, enemy, check_value):
-        dmg = self._dmg["fixed"] + sum([check_value % mod for mod in self._dmg["mod"]])
+        dmg = self.get_stat(Agent.damage_base) + check_value * self.get_stat(Agent.damage_die)
         enemy.harm(dmg)
 
-    # returns a success/fail and the card value
+    # returns a success/fail and a die value
     def check(self, target, battle_context, deck):
-        v = deck.reveal().value()
-        vs = v + self.get_combat(battle_context)
-        if v >= 26:
-            hit = True
-        elif v <= 1:
-            hit = False
-        else:
-            hit = vs > target + 13
-        # This method is slightly fairer
-        # return (hit, vs if hit else 27 - v + self.get_combat(battle_context))
-        # This method is much easier mental arithmetic
-        return (hit, vs)
+        return (self.get_stat(Agent.combat, battle_context) + deck.reveal().value() > target, random.randint(1,6))
 
-    # duel :: is it a duel, ie can the enemy fight back enough to land a hit
-    # Note that I'm considering cutting/amending the duel mechanic, as the current form is
-    # arguably un-fun.
-    def clash(self, enemy, deck, duel, battle_context):
+    def clash(self, enemy, deck, battle_context):
         (t, check_value) = self.check(
             enemy.get_combat(battle_context), battle_context, deck
         )
@@ -148,18 +142,17 @@ class Agent:
             winner, loser = self, enemy
         else:
             winner, loser = enemy, self
-        if t or duel or winner.has_special("choreo"):
-            winner.hit(loser, check_value)
+        winner.hit(loser, check_value)
 
     # This is dummy spell code to test functionality
-    def cast_spell(self, army, enemy_army):
-        self.set_mp(self.get_mp() - 1)
+    def cast_spell(self, battle_context):
+        self.set_temp_stat(Agent.mp, -1, True)
 
-    # Actions include charge, defend, and cast a given spell
+    # Actions include advance, stand ground, defend, and cast a spell while doing any of the above
     # TODO
-    def choose_action(self, army, enemy):
+    def choose_action(self, battle_context):
         return "none"
 
-    # A lazy challenge rating type heuristic. May not work for extreme values; ignores specials
+    # A challenge rating type heuristic. May not work for extreme values; ignores specials
     def power_level(self):
-        return 1.2 ** self._combat * self.get_hp() * self.expected_dmg()
+        return 1.2 ** self.get_stat(Agent.combat) * self.get_stat(Agent.hp) * self.expected_dmg()

@@ -11,7 +11,7 @@ class Card:
 
 class Deck:
     def __init__(self):
-        self.deck = [Card(rank) for rank in (range(1, 27))]
+        self.deck = [Card(rank) for rank in (range(-12, 14))]
         random.shuffle(self.deck)
         self.discard = []
 

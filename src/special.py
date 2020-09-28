@@ -7,22 +7,8 @@
 # aura specials, etc, in good time
 
 agent_specials = {
-    # If an agent is attacked other than during a clash, can it counter,
-    # as with a choreographed fight scene
-    # NB: this is deprecated with multiclash rules
-    # TODO: consider changing such that we instead get +combat
-    # when 1v2-ing? Kind of ridiculous, but I need a tank special.
-    # Can counter up to $arg1 enemies
-    "choreo": 1,
-    # Do we get +arg1 combat and +arg2 damage when 2v1-ing an enemy
-    # NB: this is an attempted striker ability. Interpret as "easier to
-    # win the fight if the enemy is busy"
-    # "flanker": (3, (0, [2])),
-    # Can we absorb up to $arg1 damage to allies per round
-    # NB: this is an attempted tank ability, but hmm.
-    # "lifelink": 5,
     # Does an agent have magic spells
-    # There's a bonus if the spell is from $arg1 discipline.
+    # There's a +$arg2 bonus if the spell is from $arg1 discipline.
     "magic": None,
     # Do we get +arg1 combat vs every opponent after the first:
     # Conservation of Ninjutsu
@@ -33,6 +19,9 @@ agent_specials = {
     # Each turn, with probability $arg1,
     # recovers randint(1,$arg2) hit points
     "regenerate": (1.0, 1),
+    # If we hit someone, they can't act again for $arg1 rounds
+    # They can still defend if attacked
+    "stagger": 1,
 }
 
 # agent_specials = {hash(k): agent_specials[k] for k in agent_specials.keys()}

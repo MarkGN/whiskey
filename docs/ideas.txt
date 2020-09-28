@@ -4,7 +4,7 @@ This is a file of appealing ideas I'd like to test or develop mechanics for.
 CONTENTS
 =======
 
-Variable-length rounds
+Sniper mode
 XP
 More traits
 Gear
@@ -16,12 +16,10 @@ Splash damage
 Refactoring
 
 =======
-Variable-length rounds
+Sniper mode
 =======
 
-Remember Darth Maul vs Qui-gon and Obi-wan, how DM kicked OW away and soloed QG awhile, killing him? I currently don't have a great way of implementing that, and I think it could be good for major boss fights. It would have sucked if QG had won, "Hey thanks for cheerleading, Obi," but it turned out well.
-
-Rather than upend the core mechanic, add a Staggering Blow ability: take -1 combat; on a success, the victim is thrown out of the way and can't choose to engage next round, but can still defend.
+A striker-type build with a ranged weapon can enter sniper mode at will. From here, instead of clashing, they take uncontested shots more similar to that of D&D. While in sniper mode, a hit inflicts double damage, and a fail does not trigger negative consequences. However, any attack made against an agent in sniper mode is treated as a sneak attack, and interrupts the sniper's action that round and breaks them out of sniper mode.
 
 =======
 XP
@@ -34,6 +32,12 @@ However, I'm not sure how to do White Wolf's style while also encouraging/enforc
 But I need to workshop doing these in such a way that balance doesn't go crazy. Power is exponential in combat, loosely, so the XP cost for that should be exponential, I guess, if it's possible to buy at all. We want strikers to be able to buy damage more cheaply than tanks can, for example, and tanks to buy HP more cheaply. We could have separate spell paths, like you can only buy a level k+1 spell of any of those roles if you have a level k spell; so because you can only cast one spell at a time, better to specialise and have access to the top-level stuff, with maybe a few cross-class utility spells? I also don't really hate the notion of generalists, except that it'd be nice if not all characters looked basically the same. Compared with d20, a character with good defence and one with good offence are much less differentiated.
 
 *One way would be paths that offer related XP discounts, "Path of the fighter: fighter perks get 1/3 XP cost off", where you can only have one path or a path itself costs significant XP.
+
+-------
+
+With the idea of sniper mode, this might be easier. Offer +1 general combat or +3 specific to sniper mode: the latter is only good for a striker, the former not good enough for a striker. Ultimate spells with dance magic encourage specialisation too.
+
+-------
 
 In D&D, a level 5 fighter has roughly 2.5* the DPS of a level 1, and 2.5* the HP, and probably a little more armour by virtue of buying splint/plate/whatever and finding magic items. So 4 levels to *=2.5, suggesting +30% per level or so. OTOH, each successive level seems to do more than the previous: other than HP and gold, l2 just gives action surge, once per combat; l3 gives improved crits worth about +6% DPS; l4 gives ~+20% DPS, +1 to-hit being worth +10% and +1 damage being about +9%; and l5 gives 2 attacks per round, fully doubling it, which seems a ludicrous power spike.
 
@@ -143,11 +147,11 @@ We could do the same for damage randomisation. Rather than sometimes inflict 3 d
 MANA, OR NOT; DANCE MAGIC
 =======
 
-I think mana is more sensible than spell slots, the latter being rather complicated and I suspect more informed by Gygax's love of Vance than principles of game design. I do have to admit that spell slots do at least force casters to use more than one spell.
+I think mana is more sensible than spell slots, the latter being rather complicated and I suspect more informed by Gygax's love of Vance than principles of game design. I do have to admit that spell slots do at least force casters to use more than one spell; I'm not sure whether to interpret that as encouraging variety or papering over poorly balanced spells.
 
-Still, mana and slots aren't the only ways to effect a resource management mechanic. There's also blood magic, wherein spells are cast from HP (which seems like it would give very meaningful choices), or maybe combat or damage stats; and exhaustion magic, wherein an agent gets a combat malus if low on energy, so as to encourage holding off. There's also WoW's rage mechanic, wherein it regenerates by fighting. I like this: mechanics should reward players for doing fun things/moving the action along, not for things like the five minute workday, which mana and slots both induce. So does HP, for that matter, to some extent, which makes extra work for the GM to invent time pressure.
+Still, mana and slots aren't the only ways to effect a resource management mechanic. There's also blood magic, wherein spells are cast from HP (which seems like it would give very meaningful choices: you don't want to nova that), or maybe combat or damage stats; and exhaustion magic, wherein an agent gets a combat malus if low on energy, so as to encourage holding off. There's also WoW's rage mechanic, wherein it regenerates by fighting. I like this: mechanics should reward players for doing fun things/moving the action along, not for things like the five minute workday, which mana and slots both induce. So does HP, for that matter, to some extent, which makes extra work for the GM to invent time pressure.
 
-I have a vague idea of something I term dance magic, in terms of how I want it to feel, wherein players shift from one tactic to another, building up over a fight, like freestyle dancers beginning with basic steps, then adding twirls and getting progressively more elaborate over the course of a song. My working idea for implementation is that different actions cost and generate different-coloured tokens, all of which reset at the start of a battle: mundane attacks give a white token, basic spells cost a white token and generate a red, advanced spells cost a red and a white. Different colours for different schools of magic, which would favour specialists within a school, since they could freely use all their advanced spells; and maybe dark tokens (scarlet vs pink) for ultimates. Agents thus can't open with their strongest attacks.
+I have a vague idea of something I term dance magic, in terms of how I want it to feel, wherein players shift from one tactic to another, building up over a fight, like freestyle dancers beginning with basic steps, then adding twirls and getting progressively more elaborate over the course of a song. My working idea for implementation is that different actions cost and generate different-coloured tokens, all of which reset at the start of a battle: mundane attacks give a white token, basic spells cost a white token and generate a red, advanced spells cost a red and a white. Different colours for different schools of magic, which would favour specialists within a school, since they could freely use all their advanced spells; and maybe dark tokens (scarlet vs pink) for ultimates. Agents thus can't open with their strongest attacks: there's a warm-up, and one finishes it with a Fatality ultimate attack.
 
 It could make certain spells objectively hard to cast. You want to raise the dead? Sure, all you have to do is have your healer go 15 rounds without either ending the battle prematurely or himself dying. This possibility intrigues me; it means it's never a "whatever, we'll revive you on our day off" situation, where you can freely use mana-heavy spells just as long as you don't do anything else. It also means kaiju fights are likely to be as epic as they deserve. It means there's no conception of hot and cold magic.
 
@@ -166,6 +170,8 @@ One possibility is to rule that, on a successful clash, a splasher simply also h
 I'm a little reluctant to use saving throws based on a stat other than combat, because that will make nimble underpowered compared with tough; but I could just rebalance those, or I could use a combat-based save, or even something else modified by those traits. (For example, threat probably shouldn't affect most spell saves.) 
 
 If splash attacks are significantly more powerful than generic attacks, counting all targets, then half damage could be balanced. Normally, a check decides which of two parties will be damaged, so there's a swing of 2* your damage; so you could have splashes that take 3 turns to charge, inflict 4* normal damage on a hit (split between multiple targets) or 2* on a save, and require a build that's so much weaker that the fact that they don't take damage in return is mitigated. Or maybe the need to be defended would be enough balance? After all, they don't exist in a vacuum.
+
+Sniper mode could do this fine too. Make a single check vs all targets, do respectable damage to anyone it hits, and nothing otherwise (why does D&D like half damage on saves?), with sniper mode itself being the drawback. A little weird that this usually hits either everyone or no-one, but we can work with that, or draw separately for each, perhaps with a charge-up so that each check is important.
 
 =======
 REFACTORING
@@ -202,9 +208,3 @@ Suspend n: trigger now, reach fruition in n
 Wither n: targets get -n combat on being hit by this, non-stacking. Or -1 per round up to n.
 
 MtG has dozens of keywords, many of which are interesting enough that I'd be delighted to plagiarise them, but which I can't see how to implement them without making it into a card game, which would violate the design goal of running on commodity hardware. General points are spells castable from the graveyard; discard effects; dredge, anything else interacting with the GY; anything that assumes you'll have a bunch of creatures in play; and anything involving card (dis)advantage, which includes things like entwine where you can pay more to get more out of a card or flashback or kicker or madness. Entwine could still do a little, letting you use two abilities in one turn?
-
-=======
-NOTE TO SELF
-=======
-
-Checking combat plus d26 vs combat plus 13 entails that awkward +13. A better idea is, rather than label cards 1--26, label them -12--13; or equivalently, 1--13 and tell the drawer to subtract 13 from their total on a black card. Now the GM doesn't have to remember combat+13 for every enemy on screen, and the players don't have to bitch about figuring it out for themselves.

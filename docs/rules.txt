@@ -6,11 +6,19 @@ Battles are divided into phases.
 
 1. The GM describes the situation: the environment, any enemies, any allies, and anything else of importance.
 
-2. Players declare what their characters will try to do for the next few moments. Typical options are to advance, stand ground, or use spells/other special abilities.
+2. Players declare what their characters will try to do for the next few moments. Typical options are to advance, stand ground, or defend a person or area. They may use spells/other special abilities, typically in addition to one of the above.
 
-The GM may give additional information or ask for clarification. For example, if a player advances and there are two enemies in the way, they may be asked which they would prefer to engage.
+The GM may give additional information or ask for clarification. For example, if a player advances and there are two enemies in the way, they may be asked which they would prefer to engage. In serious play, characters should have cards describing their key abilities, and will lay cards face-down on the table, then reveal in unison, because conceptually they're acting at the same time and shouldn't telegraph info to each other; however, in casual play or when the players are all on the same side, it's fine to ask people to just describe it out loud.
 
-3. Attacking characters are paired off into *clashes*. Multiple characters may attack the same enemy, who clashes with each of them.
+3. The GM describes what actually happens. Typically, characters fighting each other are paired into *clashes*. Multiple characters may attack the same enemy, who clashes with each of them independently.
+
+Sometimes, multiple characters (including NPCs) will have different ideas about whom to fight. In general, if one character wants to try something and nobody is stopping them, they succeed (they at least succeed in initiating a clash); and if character A tries to do something and character B attacks them, B achieves a clash and prevents A from doing whatever they were trying.
+
+For example, suppose that Alice and Bob both want to attack a goblin shaman with two bodyguards, the shaman wishes to cast a support spell, and the bodyguards wish to protect the shaman. Alice and Bob are players, and the goblins are NPCs. Alice and Bob declare their intentions. Nobody is stopping the bodyguards, so they successfully intercept the PCs, triggering clashes; this prevents the players from attacking the shaman, meaning he casts his spell unopposed.
+
+Occasionally, it may happen that everybody is being stopped by somebody in a loop. For example, if Alice and Bob are fighting Xena and Yulanda, where Alice wants to pair with Xena, Xena with Bob, Bob with Yulanda, and Yulanda with Alice, then there's no way to decide who intercepts whom. In such cases, pick any one character arbitrarily to be successful, then continue resolving as normal. In tournament settings, the character should be selected at random, but in casual play, it should be whichever PC spoke first in declaring their action in step 2.
+
+In general, chains of length 4 or longer are impossible, ie it shouldn't be possible that (A and B), (B and C), and (C and D) all clash in the one round. If the agents try to fight like that, (B and C) would be unable to fight because A and D are respectively interrupting. Homebrew abilities that can violate this principle should not be written, because this can significantly complicate resolution when some of these clashes would incapacitate agents.
 
 4. All players, and the GM on behalf of NPCs, perform any *checks* necessary.
 
@@ -22,11 +30,11 @@ The GM may give additional information or ask for clarification. For example, if
 Example
 -------
 
-GM: "Princess Alyssa, Sir Bobdor, as you make your way through the woods, suddenly, three generic Tolkienesque goblins jump out and rush at you. One has a sword, the other two axes. Alyssa, what do you do?"
+GM: "Princess Alice, Sir Bob, as you make your way through the woods, suddenly, three generic Tolkienesque goblins jump out and rush at you. One has a sword, and the other two have axes. Alyssa, what do you do?"
 
 A: "Draw my sword and charge the one with the sword."
 
-GM: "Bobdor?"
+GM: "Bob?"
 
 B: "Charge one with an axe I guess."
 
@@ -34,7 +42,7 @@ GM: "Okay, both of you engage a goblin, and the other axe goblin flanks Bobdor. 
 
 *A gets a 14, B 25, and GM 8. In all cases, a value of between 19 and 23 is necessary to pass, so only B passes*
 
-GM: "Alyssa, you move forward to engage the goblin. It opens with a flurry of aggressive slashes. You parry and press forward, but it's quicker than it looks and lands a followup swipe into your thigh. Take 4 damage. Bobdor, you see the two goblins charging you and react. You rush one, lock blades, and kick it in the head, sending it reeling. *knocks off 3 HP* The second goblin comes at you; you hop back out of range of its hack, smack its blade back, and land a deep cut against its chest. *knocks off 6 HP* It stumbles back and screeches defiantly, but it's badly bloodied. What now?"
+GM: "Alice, you move forward to engage the goblin. It opens with a flurry of aggressive slashes. You parry and press forward, but it's quicker than it looks and lands a followup swipe into your thigh. Take 4 damage. Bob, you see the two goblins charging you and react. You rush one, lock blades, and kick it in the head, sending it reeling. *knocks off 3 HP* The second goblin comes at you; you hop back out of range of its hack, smack its blade back, and land a deep cut against its chest. *knocks off 6 HP* It stumbles back and screeches defiantly, but it's badly bloodied. What now?"
 
 =======
 CLASH
@@ -42,7 +50,7 @@ CLASH
 
 When two characters fight, a clash is initiated. One character performs a *check* of their combat stat against the opponent's combat. If the check passes, that character successfully hits the opponent; if they fail, the opponent hits them. Only one check is performed, preferably the character attacking, or one controlled by a player, but it doesn't make a big mechanical difference.
 
-This is in contrast to d20, where a failed check means you miss, but your opponent may then miss too. Such a check means "Does this specific attack connect". A Whiskey check is rather conceptualised as "Which of us will land the next hit": if it's not you, it's the other guy. Currently, there exist no rules allowing mutual hits.
+This is in contrast to d20, where a failed check means you miss, but your opponent may then miss too. Such a check means "Does this specific attack connect". A Whiskey check is rather conceptualised as "Which of us will land the next hit": if it's not you, it's the other guy. Mutual hits and mutual misses are typically impossible.
 
 The duration of a check is indeterminate, and may be narrated at GM discretion. Typically it will last a few seconds.
 
@@ -50,32 +58,32 @@ The duration of a check is indeterminate, and may be narrated at GM discretion. 
 CHECK
 =======
 
-To perform a check of X vs Y, draw a card from your *deck*. Call this number C, and let V = X+C. If V > Y+13, the check passes; otherwise, it fails. Either way, the value V is used further. If C is 26, the check always passes, and if C is 1, it always fails.
+To perform a check of X vs Y, draw a card from your *deck*. Call the number on it C. At the same time, roll a d6 and call the number rolled D. If X+C > Y, the check passes; otherwise, it fails.
 
-Characters have a damage stat composed of two parts, a fixed number and any amount of 'mod' numbers. Both are used whenever that character inflicts damage. When a check is used to decide a clash, the damage is equal to the fixed part plus the sum of (V modulo p) for p in their mod numbers.
+Characters have a damage stat composed of two numbers, a base and a die. Damage is equal to base + D*die. A high card C is typically good for whoever makes the check; a high die roll D is typically good for whoever wins the check.
 
 -------
 Example
 -------
 
-Charlie has combat=10, fixed=3, and mod=[3,4]. They draw a 19, for V=29, against an opponent with combat 10. This implies Charlie only needs to beat 23, so he lands the next hit. Damage inflicted is (fixed + 29 mod 3 + 29 mod 4) = (3 + 2 + 1) = 6.
+Charlie has combat=10, base=4, and die=1. They draw a 6 and roll a 3. X+C=16, against an opponent with combat 10, so Charlie lands the next hit. Damage inflicted is base+D*die = 4+2*1 = 6 damage.
 
 =======
 DECK
 =======
 
-Each faction (the players, friendly NPCs, enemies) should have their own deck of cards. If you use standard playing decks with no jokers, assign a value of 1 to an ace up to 13 to a king, and +13 if the suit is red. Each card should therefore have a number from 1 to 26. Once a card is drawn, it should be left discarded until the deck is empty, then reshuffled in.
+Each faction (the players, friendly NPCs, enemies) should have their own deck of cards. If you use standard playing decks with no jokers, assign a value of 1 to an ace up to 13 to a king, and -13 if the suit is black. Each card should therefore have a number from -12 to 13. Once a card is drawn, it should be left discarded until the deck is empty, then reshuffled in.
 
 A player should only draw from their deck for a check they want to succeed; otherwise, reword the check or have an enemy perform it. The idea is that a player's good and bad luck should cancel out, which won't happen if the players draw all the low cards and the enemies draw all the high ones.
 
-I suggest splitting each deck into two halves, each with the values 1 through 26. When one half is used up, reshuffle that one and use the other. This way, action shouldn't block on shuffling, and the odds of extreme good or bad luck are even lower.
+I suggest splitting each deck into two halves, each with the values -12 through 13. When one half is used up, reshuffle that one and use the other. This way, action shouldn't block on shuffling, and the odds of extreme good or bad luck are even lower.
 
-If playing on a computer engine that doesn't handle cards elegantly, it's acceptable to roll d26. Note that this entails higher variance, so encounters should be tuned accordingly.
+If playing on a computer engine that doesn't handle cards elegantly, it's acceptable to roll d26-13. Note that this entails higher variance, so encounters should be tuned accordingly.
 
 =======
 EDGE CASES
 =======
 
-If multiple agents group up on one target, they just all clash one by one. There's so particular flanking bonus or anything. The interpretation of this is an intricately choreographed fight scene, with one hero ninja fighting off hordes of weaker ones; or the fighter manoeuvring around to prevent the enemies from exploiting their numbers. Unlike in d20, it's assumed that agents move around during fights with plenty of footwork, feinting, dodging, etc.
+If multiple agents group up on one target, they all clash one by one. There's so particular flanking bonus or anything. The interpretation of this is an intricately choreographed fight scene, with one hero ninja fighting off hordes of weaker ones; or the fighter manoeuvring around to prevent the enemies from exploiting their numbers. Unlike in d20, it's assumed that agents move around during fights with plenty of footwork, feinting, dodging, etc.
 
-If multiple agents group up on one who's almost dead, and some win and others don't, the losers don't get hit.
+If multiple agents group up on one, and some win and others don't, then mechanically damage is inflicted on the one, and only if he is not incapacitated does he inflict any in return. It's fine to narrate the one as inflicting cosmetic damage. Personally, I'm a fan of "The hobgoblin shoves Bob away, trips Alice, steps on her back to pin her to the ground, and raises its sword high to deliver the killing blow. At the last moment, Bob comes out of nowhere and tackles it off her. It rolls with it and kicks him off, and makes to get to its feet, when Alice comes back and runs it through."
