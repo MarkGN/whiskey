@@ -1,0 +1,39 @@
+Whiskey is not equivalent to d20, does some things it can't, and doesn't do some things it does. This is by design, as necessary trade-offs for things like speed and flow. However, it's plausible that a GM might have a d20 campaign and want to run the general setting with Whiskey rules. This document gives case studies on how to convert.
+
+-------
+
+Suppose, as a simple example, a human fighter wishes to engage a goblin. The human has 17 AC, +5 to-hit, d12+3 damage, and 12 HP; and the goblin has 15 AC, +4 to-hit, d6+2 damage, and 7 HP. We wish to model this as closely as possible with Whiskey rules.
+
+By the rules of d20, each attack by the fighter has 11/20 chance to hit. Each attack by the goblin has 8/20 chance to hit. Assuming they stand there hacking at each other (a standard tactic), the fighter will land 11 hits to every 8 by the goblin. 11:8 is approximately equal to 15:11, which Whiskey would give if one party had a combat stat 2 higher than the other; so if we arbitrarily give the goblin 10 combat, the fighter should have 12.
+
+We can use HP totals and the goblin's damage directly. For the fighter's damage, Whiskey doesn't use d12, but we can approximate that as d6+3, giving him a total of d6+6 damage.
+
+-------
+
+Suppose that the goblin also has a shortbow with the same stats, and the engagement is at such a range that it gets one free shot before it has to drop its bow and fight with its scimitar. In that case, it has 8/20 chance to land a hit before the fighter can close, ie the fighter only closes without being shot with probability 12/20; so the fighter's chance of landing the first hit decreases to 12/20*11/19, which is approximately equal to 8/26, which is 7 chances in 26 lower than the 15 calculated above. We therefore declare the goblin has a ranged special granting +7 in the first round of combat[1].
+
+-------
+
+Suppose that the fighter also has javelins with the same to-hit as his greataxe, but only d6+3 damage, and again, he will get one off before closing. Symmetrically, we can suppose that this also gives him +7 for the first round. However, it will inflict less damage. We could model this as either "Ranged: in the first round, +7 combat. If he wins by less than 7, inflict only d6+3 damage", or split the difference: "Ranged: in the first round, +7 combat and -2 damage." The latter is a bit simpler, the former a bit more realistic and faithful to the original scenario.
+
+-------
+
+
+
+=======
+
+THINGS THAT DON'T TRANSLATE AT ALL
+
+=======
+
+1) Action economy. In D&D, a larger group gets more actions per round and is therefore disproportionately stronger than a smaller group. In Whiskey, the clash mechanic means this isn't really the case. Accordingly, naively copying encounters into Whiskey will cause fights against larger groups of weaker enemies to become easier, and fights against lone boss monsters to become harder.
+
+2) Focus fire. Somewhat related to action economy, if a party has good mobility or ranged attacks, they can often eliminate enemies one by one. In Whiskey, they can do this to some extent with sniper mode, but not really.
+
+=======
+
+FOOTNOTES
+
+=======
+
+[1] Depending on context, a ranged attack with a 50% chance to hit before closing to melee would normally be +6 or +7. For two evenly matched fighters, it would be a theoretical +6.5; or +7 for a slightly weaker fighter, +6 for a slightly stronger. I'd actually be inclined to use +6, because the statistics can become unstable with very large combat discrepancies. For example, consider if you stack two such effects, eg you had a longbow that could get two shots off: with +7 for each arrow, they would give a 100% win rate, rather than the 87.5% that makes intuitive sense, or the 96.2% with both being +6. Even making the bonus +5 is justifiable for that reason. That being said, the longbow could get two hits, which this special can't capture, so it's arguably fair to compensate that with higher odds of one hit.
